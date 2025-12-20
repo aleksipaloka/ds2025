@@ -1,7 +1,6 @@
-package gr.hua.dit.ds2025.entities;
+package gr.hua.dit.ds2025.model;
 
 import jakarta.persistence.*;
-import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 
 import java.util.HashSet;
 import java.util.List;
@@ -31,10 +30,9 @@ public class User {
     @Column
     private String password;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "userRoles",
-            joinColumns = @JoinColumn(name="userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
-    private Set<Role> roles = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false, length = 20)
+    private Role role;
 
     @OneToMany(mappedBy = "driver", cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.PERSIST})
@@ -54,7 +52,7 @@ public class User {
     //constructors
     public User(){}
 
-    public User(long id, String name, String lastName, String username, String email, String password, Set<Role> roles,
+    public User(long id, String name, String lastName, String username, String email, String password, Role role,
                 List<Trip> tripsAsDriver, List<Trip> tripsAsPassenger, List<Review> reviewsWritten, List<Review> reviewsConcerning) {
         this.id = id;
         this.name = name;
@@ -62,7 +60,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.roles = roles;
+        this.role = role;
         this.tripsAsDriver = tripsAsDriver;
         this.tripsAsPassenger = tripsAsPassenger;
         this.reviewsWritten = reviewsWritten;
@@ -70,7 +68,6 @@ public class User {
     }
 
     //setters & getters
-
     public long getId() {
         return id;
     }
@@ -119,12 +116,12 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public List<Trip> getTripsAsDriver() {

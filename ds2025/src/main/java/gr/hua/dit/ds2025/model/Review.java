@@ -1,4 +1,4 @@
-package gr.hua.dit.ds2025.entities;
+package gr.hua.dit.ds2025.model;
 
 import jakarta.persistence.*;
 
