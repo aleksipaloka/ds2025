@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.54">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>786</IntrospectionStateNumber>
+      <IntrospectionStateNumber>811</IntrospectionStateNumber>
       <ServerVersion>18.1</ServerVersion>
       <StartupTime>1766241962</StartupTime>
       <TimeZones>true ACDT
@@ -1401,7 +1401,7 @@ false posixrules
 13229||10|C|G
 13229||-9223372036854775808|U|G
 13229||10|U|G</Grants>
-      <IntrospectionStateNumber>786</IntrospectionStateNumber>
+      <IntrospectionStateNumber>811</IntrospectionStateNumber>
       <ObjectId>16389</ObjectId>
       <OwnerName>user</OwnerName>
     </database>
@@ -4938,14 +4938,273 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>786</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>786</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>786</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>811</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>811</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>811</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-12-20.14:54:48</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-12-20.15:01:04</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>759</StateNumber>
       <OwnerName>user</OwnerName>
     </schema>
+    <sequence id="276" parent="275" name="review_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16430</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>805</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>user</OwnerName>
+    </sequence>
+    <sequence id="277" parent="275" name="roles_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16431</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>806</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>user</OwnerName>
+    </sequence>
+    <sequence id="278" parent="275" name="trip_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16432</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>807</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>user</OwnerName>
+    </sequence>
+    <sequence id="279" parent="275" name="user_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16433</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>808</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>user</OwnerName>
+    </sequence>
+    <table id="280" parent="275" name="review">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16398</ObjectId>
+      <StateNumber>800</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <table id="281" parent="275" name="roles">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16404</ObjectId>
+      <StateNumber>810</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <table id="282" parent="275" name="trip">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16410</ObjectId>
+      <StateNumber>809</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <table id="283" parent="275" name="trip_passengers">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16418</ObjectId>
+      <StateNumber>809</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <table id="284" parent="275" name="user_roles">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16423</ObjectId>
+      <StateNumber>810</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <column id="285" parent="280" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>800</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="286" parent="280" name="comments">
+      <Position>2</Position>
+      <StateNumber>800</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="287" parent="280" name="rating">
+      <Position>3</Position>
+      <StateNumber>800</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="288" parent="280" name="reviewee">
+      <Position>4</Position>
+      <StateNumber>800</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="289" parent="280" name="reviewer">
+      <Position>5</Position>
+      <StateNumber>800</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="290" parent="280" name="review_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16402</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>800</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="291" parent="280" name="review_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16403</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>800</StateNumber>
+      <UnderlyingIndexId>16402</UnderlyingIndexId>
+    </key>
+    <column id="292" parent="281" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>801</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="293" parent="281" name="role_name">
+      <Position>2</Position>
+      <StateNumber>801</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="294" parent="281" name="roles_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16408</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>801</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="295" parent="281" name="roles_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16409</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>801</StateNumber>
+      <UnderlyingIndexId>16408</UnderlyingIndexId>
+    </key>
+    <column id="296" parent="282" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>802</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="297" parent="282" name="available_seats">
+      <Position>2</Position>
+      <StateNumber>802</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="298" parent="282" name="departure_time">
+      <Position>3</Position>
+      <StateNumber>802</StateNumber>
+      <StoredType>timestamp(6)|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="299" parent="282" name="destination">
+      <Position>4</Position>
+      <StateNumber>802</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="300" parent="282" name="starting_point">
+      <Position>5</Position>
+      <StateNumber>802</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="301" parent="282" name="driver_id">
+      <Position>6</Position>
+      <StateNumber>802</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="302" parent="282" name="trip_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16416</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>802</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="303" parent="282" name="trip_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16417</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>802</StateNumber>
+      <UnderlyingIndexId>16416</UnderlyingIndexId>
+    </key>
+    <column id="304" parent="283" name="trip_id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>803</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="305" parent="283" name="user_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>803</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="306" parent="283" name="fk58mfrwv61kemq3vo640hpscj1">
+      <ColNames>trip_id</ColNames>
+      <ObjectId>16434</ObjectId>
+      <StateNumber>809</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16410</RefTableId>
+    </foreign-key>
+    <column id="307" parent="284" name="user_id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>804</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="308" parent="284" name="role_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>804</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="309" parent="284" name="fkh8ciramu9cc9q3qcqiv4ue8a6">
+      <ColNames>role_id</ColNames>
+      <ObjectId>16439</ObjectId>
+      <StateNumber>810</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16404</RefTableId>
+    </foreign-key>
+    <index id="310" parent="284" name="user_roles_pkey">
+      <ColNames>user_id
+role_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16428</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>804</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="311" parent="284" name="user_roles_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16429</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>804</StateNumber>
+      <UnderlyingIndexId>16428</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>

@@ -45,16 +45,17 @@ public class User {
 
     @OneToMany(mappedBy = "reviewer", cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.PERSIST})
-    private List<Trip> reviewsWritten;
+    private List<Review> reviewsWritten;
 
     @OneToMany(mappedBy = "reviewee", cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.PERSIST})
-    private List<Trip> reviewsConcerning;
+    private List<Review> reviewsConcerning;
 
     //constructors
     public User(){}
 
-    public User(long id, String name, String lastName, String username, String email, String password, Set<Role> roles, List<Trip> tripsAsDriver, List<Trip> tripsAsPassenger, List<Trip> reviewsWritten, List<Trip> reviewsConcerning) {
+    public User(long id, String name, String lastName, String username, String email, String password, Set<Role> roles,
+                List<Trip> tripsAsDriver, List<Trip> tripsAsPassenger, List<Review> reviewsWritten, List<Review> reviewsConcerning) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -142,19 +143,19 @@ public class User {
         this.tripsAsPassenger = tripsAsPassenger;
     }
 
-    public List<Trip> getReviewsWritten() {
+    public List<Review> getReviewsWritten() {
         return reviewsWritten;
     }
 
-    public void setReviewsWritten(List<Trip> reviewsWritten) {
+    public void setReviewsWritten(List<Review> reviewsWritten) {
         this.reviewsWritten = reviewsWritten;
     }
 
-    public List<Trip> getReviewsConcerning() {
+    public List<Review> getReviewsConcerning() {
         return reviewsConcerning;
     }
 
-    public void setReviewsConcerning(List<Trip> reviewsConcerning) {
+    public void setReviewsConcerning(List<Review> reviewsConcerning) {
         this.reviewsConcerning = reviewsConcerning;
     }
 }

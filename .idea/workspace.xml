@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2a7817-0fa6-4a6e-805b-7ee2dfad6e52" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/ds2025/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942/storage_v2/_src_/database/ds2025.EKIQsQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942/storage_v2/_src_/database/ds2025.EKIQsQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/entities/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +47,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.Ds2025Application.executor": "Run",
