@@ -1,6 +1,6 @@
-package gr.hua.dit.ds2025.repositories;
+package gr.hua.dit.ds2025.core.repositories;
 
-import gr.hua.dit.ds2025.model.User;
+import gr.hua.dit.ds2025.core.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.*;
 

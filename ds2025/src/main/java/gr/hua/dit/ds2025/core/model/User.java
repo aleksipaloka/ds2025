@@ -1,10 +1,8 @@
-package gr.hua.dit.ds2025.model;
+package gr.hua.dit.ds2025.core.model;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class User {
