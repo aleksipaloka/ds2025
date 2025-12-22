@@ -13,8 +13,8 @@ public record UserView(
         String username,
         String email,
         Role role,
-        //List<TripView> tripsAsDriver,
-        //List<TripView> tripsAsPassenger,
+        List<TripView> tripsAsDriver,
+        List<TripView> tripsAsPassenger,
         List<ReviewView> reviewsWritten,
         List<ReviewView> reviewsConcerning
 

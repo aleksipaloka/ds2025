@@ -4,6 +4,10 @@ import gr.hua.dit.ds2025.core.model.Trip;
 import gr.hua.dit.ds2025.core.service.model.TripView;
 import gr.hua.dit.ds2025.core.service.model.UserView;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class TripMapper {
     private final UserMapper userMapper;
 
@@ -12,7 +16,7 @@ public class TripMapper {
         this.userMapper = personMapper;
     }
 
-    public TripView convertTicketToTicketView(final Trip trip) {
+    public TripView convertTripToTripView(final Trip trip) {
         if (trip == null) {
             return null;
         }
@@ -25,5 +29,15 @@ public class TripMapper {
                 this.userMapper.convertUserToUserView(trip.getPassengers()),
                 this.userMapper.convertUserToUserView(trip.getDriver())
         );
+    }
+
+    public List<TripView> convertTripToTripView(final List<Trip> trips) {
+        if (trips == null) {
+            return Collections.emptyList();
+        }
+
+        return trips.stream()
+                .map(this::convertTripToTripView) // καλεί τη 1-1
+                .collect(Collectors.toList());
     }
 }
