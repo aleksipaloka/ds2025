@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.54">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>860</IntrospectionStateNumber>
+      <IntrospectionStateNumber>4854</IntrospectionStateNumber>
       <ServerVersion>18.1</ServerVersion>
       <StartupTime>1766241962</StartupTime>
       <TimeZones>true ACDT
@@ -1401,7 +1401,7 @@ false posixrules
 13229||10|C|G
 13229||-9223372036854775808|U|G
 13229||10|U|G</Grants>
-      <IntrospectionStateNumber>860</IntrospectionStateNumber>
+      <IntrospectionStateNumber>4811</IntrospectionStateNumber>
       <ObjectId>16389</ObjectId>
       <OwnerName>user</OwnerName>
     </database>
@@ -4938,16 +4938,25 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>860</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>860</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>860</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>4811</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>4811</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>4811</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-12-20.15:14:01</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-12-22.00:06:55</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>759</StateNumber>
       <OwnerName>user</OwnerName>
     </schema>
-    <sequence id="276" parent="275" name="review_seq">
+    <sequence id="276" parent="275" name="client_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16481</ObjectId>
+      <SequenceIdentity>1+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>4802</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <OwnerName>user</OwnerName>
+    </sequence>
+    <sequence id="277" parent="275" name="review_seq">
       <DetailsLevel>2</DetailsLevel>
       <ObjectId>16430</ObjectId>
       <SequenceIdentity>1+50</SequenceIdentity>
@@ -4956,7 +4965,7 @@ false posixrules
       <StoredType>bigint|0s</StoredType>
       <OwnerName>user</OwnerName>
     </sequence>
-    <sequence id="277" parent="275" name="roles_seq">
+    <sequence id="278" parent="275" name="roles_seq">
       <DetailsLevel>2</DetailsLevel>
       <ObjectId>16431</ObjectId>
       <SequenceIdentity>1+50</SequenceIdentity>
@@ -4965,7 +4974,7 @@ false posixrules
       <StoredType>bigint|0s</StoredType>
       <OwnerName>user</OwnerName>
     </sequence>
-    <sequence id="278" parent="275" name="trip_seq">
+    <sequence id="279" parent="275" name="trip_seq">
       <DetailsLevel>2</DetailsLevel>
       <ObjectId>16432</ObjectId>
       <SequenceIdentity>1+50</SequenceIdentity>
@@ -4974,7 +4983,7 @@ false posixrules
       <StoredType>bigint|0s</StoredType>
       <OwnerName>user</OwnerName>
     </sequence>
-    <sequence id="279" parent="275" name="user_seq">
+    <sequence id="280" parent="275" name="user_seq">
       <DetailsLevel>2</DetailsLevel>
       <ObjectId>16433</ObjectId>
       <SequenceIdentity>1+50</SequenceIdentity>
@@ -4983,147 +4992,5 @@ false posixrules
       <StoredType>bigint|0s</StoredType>
       <OwnerName>user</OwnerName>
     </sequence>
-    <table id="280" parent="275" name="review">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16444</ObjectId>
-      <StateNumber>856</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>user</OwnerName>
-    </table>
-    <table id="281" parent="275" name="trip">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16450</ObjectId>
-      <StateNumber>859</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>user</OwnerName>
-    </table>
-    <table id="282" parent="275" name="trip_passengers">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16458</ObjectId>
-      <StateNumber>859</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>user</OwnerName>
-    </table>
-    <column id="283" parent="280" name="id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>856</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="284" parent="280" name="comments">
-      <Position>2</Position>
-      <StateNumber>856</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="285" parent="280" name="rating">
-      <Position>3</Position>
-      <StateNumber>856</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="286" parent="280" name="reviewee">
-      <Position>4</Position>
-      <StateNumber>856</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="287" parent="280" name="reviewer">
-      <Position>5</Position>
-      <StateNumber>856</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <index id="288" parent="280" name="review_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16448</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>856</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="289" parent="280" name="review_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16449</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>856</StateNumber>
-      <UnderlyingIndexId>16448</UnderlyingIndexId>
-    </key>
-    <column id="290" parent="281" name="id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>857</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="291" parent="281" name="available_seats">
-      <Position>2</Position>
-      <StateNumber>857</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="292" parent="281" name="departure_time">
-      <Position>3</Position>
-      <StateNumber>857</StateNumber>
-      <StoredType>timestamp(6)|0s</StoredType>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="293" parent="281" name="destination">
-      <Position>4</Position>
-      <StateNumber>857</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="294" parent="281" name="starting_point">
-      <Position>5</Position>
-      <StateNumber>857</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="295" parent="281" name="driver_id">
-      <Position>6</Position>
-      <StateNumber>857</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <index id="296" parent="281" name="trip_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16456</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>857</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="297" parent="281" name="trip_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16457</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>857</StateNumber>
-      <UnderlyingIndexId>16456</UnderlyingIndexId>
-    </key>
-    <column id="298" parent="282" name="trip_id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>858</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="299" parent="282" name="user_id">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>858</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <foreign-key id="300" parent="282" name="fk58mfrwv61kemq3vo640hpscj1">
-      <ColNames>trip_id</ColNames>
-      <ObjectId>16463</ObjectId>
-      <StateNumber>859</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16450</RefTableId>
-    </foreign-key>
   </database-model>
 </dataSource>
