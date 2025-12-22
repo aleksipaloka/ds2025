@@ -1,0 +1,137 @@
+package gr.hua.dit.ds2025.core.service.impl;
+
+import gr.hua.dit.ds2025.core.model.User;
+import gr.hua.dit.ds2025.core.repositories.UserRepository;
+import gr.hua.dit.ds2025.core.service.UserBusinessLogicService;
+import gr.hua.dit.ds2025.core.service.mapper.UserMapper;
+import gr.hua.dit.ds2025.core.service.model.CreateUserRequest;
+import gr.hua.dit.ds2025.core.service.model.CreateUserResult;
+
+import gr.hua.dit.ds2025.core.service.model.UserView;
+import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
+
+import org.hibernate.usertype.UserType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.Set;
+
+public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserBusinessLogicServiceImpl.class);
+
+
+    private final Validator validator;
+    private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+
+    public UserBusinessLogicServiceImpl(final Validator validator,
+                                          final PasswordEncoder passwordEncoder,
+                                          final UserRepository userRepository,
+                                          final UserMapper userMapper) {
+        if (validator == null) throw new NullPointerException();
+        if (passwordEncoder == null) throw new NullPointerException();
+        if (userRepository == null) throw new NullPointerException();
+        if (userMapper == null) throw new NullPointerException();
+
+        this.validator = validator;
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+    }
+
+    @Transactional
+    @Override
+    public CreateUserResult createUser(final CreateUserRequest createUserRequest, final boolean notify) {
+        if (createUserRequest == null) throw new NullPointerException();
+
+        // `CreateUserRequest` validation.
+        // --------------------------------------------------
+
+        final Set<ConstraintViolation<CreateUserRequest>> requestViolations
+                = this.validator.validate(createUserRequest);
+        if (!requestViolations.isEmpty()) {
+            final StringBuilder sb = new StringBuilder();
+            for (final ConstraintViolation<CreateUserRequest> violation : requestViolations) {
+                sb
+                        .append(violation.getPropertyPath())
+                        .append(": ")
+                        .append(violation.getMessage())
+                        .append("\n");
+            }
+            return CreateUserResult.fail(sb.toString());
+        }
+
+        // Unpack (we assume valid `CreateUserRequest` instance)
+        // --------------------------------------------------
+
+        final String username = createUserRequest.username().strip(); // remove whitespaces
+        final String name = createUserRequest.name().strip();
+        final String lastName = createUserRequest.lastName().strip();
+        final String email = createUserRequest.email().strip();
+        final String password = createUserRequest.Password();
+
+        // Advanced mobile phone number validation.
+        // --------------------------------------------------
+
+        if (this.userRepository.existsByUsernameIgnoreCase(username)) {
+            return CreateUserResult.fail("Username already registered");
+        }
+
+        if (this.userRepository.existsByEmailIgnoreCase(email)) {
+            return CreateUserResult.fail("Email Address already registered");
+        }
+
+        // --------------------------------------------------
+
+        final String Password = this.passwordEncoder.encode(password);
+
+        // Instantiate user.
+        // --------------------------------------------------
+
+        User user = new User();
+        user.setId(null); // auto generated
+        user.setUsername(username);
+        user.setName(name);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPassword(Password);
+
+        // --------------------------------------------------
+
+        final Set<ConstraintViolation<User>> userViolations = this.validator.validate(user);
+        if (!userViolations.isEmpty()) {
+            // Throw an exception instead of returning an instance, i.e. `CreateUserResult.fail`.
+            // At this point, errors/violations on the `User` instance
+            // indicate a programmer error, not a client error.
+            throw new RuntimeException("invalid User instance");
+        }
+
+        // Persist user (save/insert to database)
+        // --------------------------------------------------
+
+        user = this.userRepository.save(user);
+
+        // --------------------------------------------------
+
+        if (notify) {
+            final String content = String.format(
+                    "You have successfully registered for the GreenRide application. " +
+                            "Use your username (%s) to log in.", username);
+        }
+
+        // Map `User` to `UserView`.
+        // --------------------------------------------------
+
+        final UserView userView = this.userMapper.convertUserToUserView(user);
+
+        // --------------------------------------------------
+
+        return CreateUserResult.success(userView);
+    }
+}
