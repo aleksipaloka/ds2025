@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2a7817-0fa6-4a6e-805b-7ee2dfad6e52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942/storage_v2/_src_/database/ds2025.EKIQsQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942/storage_v2/_src_/database/ds2025.EKIQsQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/InitializationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/UserView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/entities/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/model/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/entities/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/entities/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/model/Trip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/entities/Review.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/entities/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/entities/Trip.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/entities/User.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +18,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,27 +48,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Ds2025Application.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;DB-A&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/k4446/Documents/GitHub/ds2025&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.Ds2025Application.executor": "Run",
+    "git-widget-placeholder": "Back-A",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/k4446/Documents/GitHub/ds2025",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Ds2025Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -94,6 +86,7 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-30f59d01ecdd-cffe25b9f5b3-intellij.indexing.shared.core-IU-253.28294.334" />
+        <option value="bundled-js-predefined-d6986cc7102b-c7e53b3be11b-JavaScript-IU-253.28294.334" />
       </set>
     </attachedChunks>
   </component>
@@ -104,6 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1766236729102</updated>
+      <workItem from="1766321006017" duration="5521000" />
     </task>
     <servers />
   </component>
