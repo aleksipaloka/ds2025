@@ -1,0 +1,20 @@
+package gr.hua.dit.ds2025.core.service;
+
+import gr.hua.dit.ds2025.core.service.model.CreateReviewRequest;
+import gr.hua.dit.ds2025.core.service.model.ReviewView;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface ReviewBusinessLogicService {
+
+    Optional<ReviewView> getReview(final Long id);
+
+    List<ReviewView> getReviews();
+
+    ReviewView createReview(final CreateReviewRequest createReviewRequest, final boolean notify);
+
+    default ReviewView createReview(final CreateReviewRequest createReviewRequest) {
+        return this.createReview(createReviewRequest, true);
+    }
+}

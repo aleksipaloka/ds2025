@@ -7,6 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
 
+
+    private final ReviewMapper reviewMapper;
+
+    public UserMapper(final ReviewMapper reviewMapper) {
+        if (reviewMapper == null) throw new NullPointerException();
+        this.reviewMapper = reviewMapper;
+    }
+
     public UserView convertUserToUserView(final User user){
         if(user == null){
             return null;
@@ -17,7 +25,10 @@ public class UserMapper {
                 user.getName(),
                 user.getLastName(),
                 user.getUsername(),
-                user.getEmail()
+                user.getEmail(),
+                user.getRole(),
+                this.reviewMapper.convertReviewToReviewView(user.getReviewsWritten()),
+                this.reviewMapper.convertReviewToReviewView(user.getReviewsConcerning())
         );
         return userView;
 
