@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     //columns
@@ -29,22 +30,22 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false, length = 20)
+    @Column(name = "roles", nullable = false, length = 20)
     private Role role;
 
     @OneToMany(mappedBy = "driver", cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.PERSIST})
+            CascadeType.PERSIST})
     private List<Trip> tripsAsDriver;
 
     @ManyToMany(mappedBy = "passengers")
     private List<Trip> tripsAsPassenger;
 
     @OneToMany(mappedBy = "reviewer", cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.PERSIST})
+            CascadeType.PERSIST})
     private List<Review> reviewsWritten;
 
     @OneToMany(mappedBy = "reviewee", cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.PERSIST})
+            CascadeType.PERSIST})
     private List<Review> reviewsConcerning;
 
     //constructors
