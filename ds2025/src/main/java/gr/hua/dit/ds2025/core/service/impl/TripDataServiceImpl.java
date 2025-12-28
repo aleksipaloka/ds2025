@@ -5,9 +5,11 @@ import gr.hua.dit.ds2025.core.repositories.TripRepository;
 import gr.hua.dit.ds2025.core.service.TripDataService;
 import gr.hua.dit.ds2025.core.service.mapper.TripMapper;
 import gr.hua.dit.ds2025.core.service.model.TripView;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TripDataServiceImpl implements TripDataService {
 
     private final TripRepository tripRepository;

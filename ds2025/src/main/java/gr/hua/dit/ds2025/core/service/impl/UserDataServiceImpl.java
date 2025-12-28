@@ -5,9 +5,11 @@ import gr.hua.dit.ds2025.core.repositories.UserRepository;
 import gr.hua.dit.ds2025.core.service.UserDataService;
 import gr.hua.dit.ds2025.core.service.mapper.UserMapper;
 import gr.hua.dit.ds2025.core.service.model.UserView;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserDataServiceImpl implements UserDataService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;

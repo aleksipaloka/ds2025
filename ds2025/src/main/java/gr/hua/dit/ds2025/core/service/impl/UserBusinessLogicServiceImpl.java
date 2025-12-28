@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserBusinessLogicServiceImpl.class);

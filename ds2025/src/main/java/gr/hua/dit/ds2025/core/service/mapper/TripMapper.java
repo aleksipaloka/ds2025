@@ -3,11 +3,13 @@ package gr.hua.dit.ds2025.core.service.mapper;
 import gr.hua.dit.ds2025.core.model.Trip;
 import gr.hua.dit.ds2025.core.service.model.TripView;
 import gr.hua.dit.ds2025.core.service.model.UserView;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class TripMapper {
     private final UserMapper userMapper;
 
