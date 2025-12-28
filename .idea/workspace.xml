@@ -5,44 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2a7817-0fa6-4a6e-805b-7ee2dfad6e52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/OpenApiConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/RestApiClientConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/SchedulingConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/ValidationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/ReviewBusinessLogicServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripBusinessLogicServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/ClientAuthResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/ReviewResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/TripResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/UserResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/error/ApiError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/error/GlobalErrorHandlerRestControllerAdvice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/error/RestApiAccessDeniedHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/error/RestApiAuthenticationEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/model/ClientTokenRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/model/ClientTokenResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/error/GlobalErrorHandlerControllerAdvice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/error/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/error/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/UserSummaryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/UserSummaryView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/repositories/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/repositories/ReviewRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/repositories/TripRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/repositories/TripRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/ReviewBusinessLogicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/ReviewBusinessLogicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/ReviewDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/ReviewDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/TripBusinessLogicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/TripBusinessLogicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/TripDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/TripDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/UserBusinessLogicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/UserBusinessLogicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/UserDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/UserDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/ReviewDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/ReviewDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/UserBusinessLogicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/UserBusinessLogicServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/UserDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/UserDataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/ReviewMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/ReviewMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/TripMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/TripMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/ReviewView.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/ReviewView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/TripView.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/TripView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/ReviewRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/ReviewRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/TripRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/TripRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/UserRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,34 +58,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.Ds2025Application.executor": "Run",
-    "git-widget-placeholder": "Back-A",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/GitHub/ds2025",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Ds2025Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Back-A&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/ds2025&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Ds2025Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -137,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1766236729102</updated>
       <workItem from="1766360888674" duration="1494000" />
-      <workItem from="1766939616848" duration="10958000" />
+      <workItem from="1766939616848" duration="12831000" />
     </task>
     <servers />
   </component>

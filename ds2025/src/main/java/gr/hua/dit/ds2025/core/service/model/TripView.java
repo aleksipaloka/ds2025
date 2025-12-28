@@ -11,6 +11,6 @@ public record TripView(
         String startingPoint,
         String destination,
         LocalDateTime departureTime,
-        List<UserView> passengers,
-        UserView driver
+        List<UserSummaryView> passengers,
+        UserSummaryView driver
 ) {}
