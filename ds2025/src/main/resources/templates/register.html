@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+
+<div class="container">
+  <h1>Register</h1>
+
+  <div th:if="${errormessage}" class="alert alert-error" th:text="${errormessage}"></div>
+
+  <form th:action="@{/register}" th:object="${createUserRequest}" method="post">
+
+    <label>Name</label>
+    <input type="text" th:field="*{name}">
+    <div class="field-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+    <label>Last name</label>
+    <input type="text" th:field="*{lastName}">
+    <div class="field-error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+
+    <label>Username</label>
+    <input type="text" th:field="*{username}">
+    <div class="field-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+
+    <label>Email</label>
+    <input type="email" th:field="*{email}">
+    <div class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+    <label>Password</label>
+    <!-- ΝΑΙ: είναι *{password} γιατί στο record είναι String password (κεφαλαίο P) -->
+    <input type="password" th:field="*{password}">
+    <div class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+    <button type="submit">Create account</button>
+  </form>
+
+  <div class="helper">
+    <a th:href="@{/login}">Already have an account? Login</a>
+    <a th:href="@{/}">Back to homepage</a>
+  </div>
+</div>
+
+</body>
+</html>

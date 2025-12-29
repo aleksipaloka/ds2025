@@ -5,19 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2a7817-0fa6-4a6e-805b-7ee2dfad6e52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/UserSummaryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/UserSummaryView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/AuthUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/HomepageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/static/css/auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/static/css/greenride.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/homepage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/logout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942/storage_v2/_src_/database/ds2025.EKIQsQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942/storage_v2/_src_/database/ds2025.EKIQsQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/ReviewMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/ReviewMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/TripMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/mapper/TripMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/ReviewView.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/ReviewView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/TripView.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/TripView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/ReviewRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/ReviewRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/TripRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/TripRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/repositories/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ApplicationUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ApplicationUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ApplicationUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ApplicationUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripBusinessLogicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripBusinessLogicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/UserBusinessLogicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/UserBusinessLogicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/CreateUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/CreateUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/model/CreateUserRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/model/CreateUserRequest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +35,10 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Record" />
         <option value="Class" />
+        <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -50,6 +57,9 @@
     &quot;accountId&quot;: &quot;6630d194-2aa6-4f9d-8d74-830038413535&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -58,34 +68,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Ds2025Application.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Back-A&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/ds2025&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.Ds2025Application.executor": "Run",
+    "git-widget-placeholder": "Back-A",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/GitHub/ds2025",
+    "list.type.of.created.stylesheet": "CSS",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleks\Documents\GitHub\ds2025\ds2025\src\main\resources\static\css\fe" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Ds2025Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -112,7 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1766236729102</updated>
       <workItem from="1766360888674" duration="1494000" />
-      <workItem from="1766939616848" duration="12831000" />
+      <workItem from="1766939616848" duration="20894000" />
     </task>
     <servers />
   </component>

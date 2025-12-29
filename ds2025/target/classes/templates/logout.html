@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Logout</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Logout</h1>
+    <p>Are you sure you want to logout?</p>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="danger">Confirm Logout</button>
+    </form>
+
+    <div class="helper">
+        <a th:href="@{/profile}">Cancel</a>
+        <a th:href="@{/}">Back to homepage</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -86,7 +86,18 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
                     .toList();
         }
 
-        @Override
+        public List<TripView> getPublicAvailableTrips() {
+
+            final List<Trip> tripList;
+
+            tripList = this.tripRepository.findAll();
+            return tripList.stream()
+                    .map(this.tripMapper::convertTripToTripView)
+                    .toList();
+        }
+
+
+    @Override
         public List<TripView> getTripsAsDriver() {
             final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
             final List<Trip> tripList;

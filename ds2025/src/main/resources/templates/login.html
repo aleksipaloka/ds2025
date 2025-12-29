@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Login</h1>
+
+    <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+    <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+
+    <!-- Spring Security default -->
+    <form th:action="@{/login}" method="post">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="username">
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="••••••••">
+
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="helper">
+        <a th:href="@{/register}">No account? Register</a>
+        <a th:href="@{/}">Back to homepage</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package gr.hua.dit.ds2025.core.service.impl;
 
+import gr.hua.dit.ds2025.core.model.Role;
 import gr.hua.dit.ds2025.core.model.User;
 import gr.hua.dit.ds2025.core.repositories.UserRepository;
 import gr.hua.dit.ds2025.core.service.UserBusinessLogicService;
@@ -12,7 +13,6 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 
-import org.hibernate.usertype.UserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -75,7 +75,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         final String name = createUserRequest.name().strip();
         final String lastName = createUserRequest.lastName().strip();
         final String email = createUserRequest.email().strip();
-        final String password = createUserRequest.Password();
+        final String password = createUserRequest.password();
 
         // Advanced mobile phone number validation.
         // --------------------------------------------------
@@ -102,6 +102,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPassword(Password);
+        user.setRole(Role.USER);
 
         // --------------------------------------------------
 

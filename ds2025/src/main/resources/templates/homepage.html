@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GreenRide</title>
+    <link rel="stylesheet" th:href="@{/css/greenride.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="leaf">🍃</span>
+        <span class="name">GreenRide</span>
+    </div>
+
+    <div class="top-actions">
+        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/login}">Login</a>
+        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/register}">Register</a>
+        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/profile}">Profile</a>
+        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/logout}">Logout</a>
+    </div>
+</header>
+
+<main class="page">
+    <div class="columns">
+
+        <!-- LEFT: Available Trips -->
+        <section class="col">
+            <h1 class="section-title">Available Trips</h1>
+
+            <div class="trip-list">
+                <div class="trip-card" th:each="t : ${availableTrips}">
+                    <div class="trip-info">
+                        <div class="trip-line strong"
+                             th:text="${t.startingPoint} + ' - ' + ${t.destination}">
+                            Starting Point - Destination
+                        </div>
+                        <div class="trip-line" th:text="${t.departureTime}">
+                            Departure Time
+                        </div>
+                        <div class="trip-line" th:text="'Available Seats: ' + ${t.availableSeats}">
+                            Available Seats: null
+                        </div>
+                    </div>
+
+                    <div class="trip-actions">
+                        <!-- Logged-in: POST booking -->
+                        <form th:if="${loggedIn == true}" th:action="@{/trips/book}" method="post">
+                            <input type="hidden" name="tripId" th:value="${t.id}"/>
+                            <button class="btn btn-success" type="submit">Book Seat</button>
+                        </form>
+
+                        <!-- Guest: πάει login -->
+                        <a th:if="${loggedIn != true}"  th:href="@{/login}" class="btn btn-success">Book Seat</a>
+                    </div>
+                </div>
+
+                <!-- fallback -->
+                <div class="trip-card" th:if="${availableTrips == null || #lists.isEmpty(availableTrips)}">
+                    <div class="trip-info">
+                        <div class="trip-line strong">No trips yet</div>
+                        <div class="trip-line">Please check again later.</div>
+                        <div class="trip-line">Available Seats: -</div>
+                    </div>
+                    <div class="trip-actions">
+                        <button class="btn btn-success" type="button" disabled>Book Seat</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- RIGHT: Upcoming Trips -->
+        <section class="col">
+            <h1 class="section-title">Upcoming Trips</h1>
+
+            <div class="trip-list">
+                <div class="trip-card" th:each="u : ${upcomingTrips}">
+                    <div class="trip-meta">
+                        <span class="role-pill"
+                              th:text="${u.roleLabel != null ? u.roleLabel : 'Passenger'}">Passenger</span>
+                    </div>
+
+                    <div class="trip-info">
+                        <div class="trip-line strong"
+                             th:text="${u.startingPoint} + ' - ' + ${u.destination}">
+                            Starting Point - Destination
+                        </div>
+                        <div class="trip-line" th:text="${u.departureTime}">
+                            Departure Time
+                        </div>
+                        <div class="trip-line" th:text="'Available Seats: ' + ${u.availableSeats}">
+                            Available Seats: null
+                        </div>
+                    </div>
+
+                    <div class="trip-actions">
+                        <form th:if="${loggedIn == true}" th:action="@{/trips/cancel}" method="post">
+                            <input type="hidden" name="tripId" th:value="${u.id}"/>
+                            <button class="btn btn-danger" type="submit">Cancel Trip</button>
+                        </form>
+
+                        <a th:if="${loggedIn != true}" th:href="@{/login}" class="btn btn-danger">Cancel Trip</a>
+                    </div>
+                </div>
+
+                <div class="trip-card" th:if="${upcomingTrips == null || #lists.isEmpty(upcomingTrips)}">
+                    <div class="trip-meta">
+                        <span class="role-pill">—</span>
+                    </div>
+                    <div class="trip-info">
+                        <div class="trip-line strong">No upcoming trips</div>
+                        <div class="trip-line">Login to see yours.</div>
+                        <div class="trip-line">Available Seats: -</div>
+                    </div>
+                    <div class="trip-actions">
+                        <button class="btn btn-danger" type="button" disabled>Cancel Trip</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-trip">
+                <a th:if="${loggedIn == true}" class="btn btn-new" th:href="@{/trips/new}">+ New Trip</a>
+                <a th:if="${loggedIn != true}" class="btn btn-new" th:href="@{/login}">+ New Trip</a>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+</body>
+</html>
