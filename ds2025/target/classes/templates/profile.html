@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GreenRide - Profile</title>
+
+    <link rel="stylesheet" th:href="@{/css/greenride.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="leaf">🍃</span>
+        <span class="name">GreenRide</span>
+    </div>
+
+    <div class="top-actions">
+        <a class="pill-btn" th:href="@{/}">Home</a>
+        <a class="pill-btn" th:href="@{/logout}">Logout</a>
+    </div>
+</header>
+
+<main class="profile-page">
+    <h1 class="profile-title" th:text="${displayName}">Name Surname</h1>
+
+    <div class="profile-columns">
+
+        <!-- LEFT: Past Trips -->
+        <section class="profile-col">
+            <h2 class="profile-subtitle">Past Trips</h2>
+
+            <div class="trip-list">
+
+                <div class="trip-card" th:each="pt : ${pastTrips}">
+                    <div class="trip-meta">
+                        <span class="role-pill"
+                              th:text="${pt.roleLabel()}"
+                              th:classappend="${pt.roleLabel() == 'Driver'} ? ' driver' : ' passenger'">
+                            Driver
+                        </span>
+                    </div>
+
+                    <div class="trip-info">
+                        <div class="trip-line strong"
+                             th:text="${pt.trip().startingPoint() + ' - ' + pt.trip().destination()}">
+                            Starting Point - Destination
+                        </div>
+
+                        <div class="trip-line"
+                             th:text="${#temporals.format(pt.trip().departureTime(), 'dd/MM/yyyy HH:mm')}">
+                            Departure Time
+                        </div>
+
+                        <div class="trip-line"
+                             th:text="${'Available Seats: ' + pt.trip().availableSeats()}">
+                            Available Seats: null
+                        </div>
+                    </div>
+
+                    <div class="trip-actions">
+                        <!-- αν δεν έχεις endpoint /trips/{id}, κάνε το @{/} -->
+                        <a class="btn btn-details"
+                           th:href="@{/trips/{id}(id=${pt.trip().id()})}">
+                            Details
+                        </a>
+                    </div>
+                </div>
+
+                <div class="trip-card" th:if="${pastTrips == null || #lists.isEmpty(pastTrips)}">
+                    <div class="trip-info">
+                        <div class="trip-line strong">No past trips</div>
+                        <div class="trip-line">—</div>
+                        <div class="trip-line">—</div>
+                    </div>
+                    <div class="trip-actions">
+                        <button class="btn btn-details" type="button" disabled>Details</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- RIGHT: Review Center -->
+        <section class="profile-col">
+            <h2 class="profile-subtitle">Review Center</h2>
+
+            <div class="review-filter">
+                <span class="filter-label">Filter By:</span>
+
+                <a class="filter-pill"
+                   th:classappend="${reviewsFilter == 'to'} ? ' active' : ''"
+                   th:href="@{/profile(reviews='to')}">
+                    Regarding Me
+                </a>
+
+                <a class="filter-pill"
+                   th:classappend="${reviewsFilter == 'from'} ? ' active' : ''"
+                   th:href="@{/profile(reviews='from')}">
+                    From Me
+                </a>
+            </div>
+
+            <div class="review-list">
+
+                <div class="review-card" th:each="r : ${reviews}">
+                    <p><strong>Review Id:</strong> <span th:text="${r.id()}">-</span></p>
+
+                    <p>
+                        <strong>Reviewer:</strong>
+                        <span th:text="${r.reviewer() != null ? r.reviewer().username() : '-'}">-</span>
+                    </p>
+
+                    <p>
+                        <strong>Reviewee:</strong>
+                        <span th:text="${r.reviewee() != null ? r.reviewee().username() : '-'}">-</span>
+                    </p>
+
+                    <p><strong>Rating:</strong> <span th:text="${r.rating()}">-</span></p>
+
+                    <p><strong>Comments:</strong> <span th:text="${r.comments()}">-</span></p>
+                </div>
+
+                <div class="review-card" th:if="${reviews == null || #lists.isEmpty(reviews)}">
+                    <p><strong>No reviews</strong></p>
+                    <p>Nothing to show for this filter.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+</body>
+</html>

@@ -15,12 +15,19 @@
     </div>
 
     <div class="top-actions">
+        <!-- Guest -->
         <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/login}">Login</a>
-        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/register}">Register</a>
-        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/profile}">Profile</a>
-        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/logout}">Logout</a>
+
+        <!-- Logged in -->
+        <a class="pill-btn" th:if="${loggedIn == true}" th:href="@{/profile}">Profile</a>
+
+        <!-- Logout MUST be POST for Spring Security -->
+        <form th:if="${loggedIn == true}" th:action="@{/logout}" method="post" class="logout-form">
+            <button type="submit" class="pill-btn">Logout</button>
+        </form>
     </div>
 </header>
+
 
 <main class="page">
     <div class="columns">

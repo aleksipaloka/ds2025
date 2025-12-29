@@ -1,0 +1,106 @@
+.profile-page{
+    background: #fff;
+    padding: 22px 24px 40px;
+    min-height: calc(100vh - 72px);
+}
+
+.profile-title{
+    margin: 8px 0 18px;
+    font-size: 44px;
+    font-weight: 900;
+}
+
+.profile-columns{
+    display:grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 28px;
+    align-items:start;
+}
+
+.profile-col .profile-subtitle{
+    margin: 10px 0 14px;
+    font-size: 26px;
+    font-weight: 900;
+}
+
+/* reuse divider class from greenride.css, but keep it consistent */
+.divider{
+    background:#222;
+    opacity: 0.5;
+    height: 100%;
+    min-height: 650px;
+}
+
+/* Past trips "Details" button */
+.btn-details{
+    background: #f0ad4e;
+    color: #fff;
+}
+
+.btn-details:hover{
+    filter: brightness(0.97);
+}
+
+/* role pills */
+.role-pill.driver{
+    color:#1f1f1f;
+}
+
+.role-pill.passenger{
+    color:#1f1f1f;
+}
+
+/* Reviews */
+.review-filter{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin: 6px 0 16px;
+}
+
+.filter-label{
+    font-weight: 800;
+    color:#2d7a2d;
+}
+
+.filter-pill{
+    display:inline-block;
+    padding: 6px 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(45,122,45,0.35);
+    color:#2d7a2d;
+    text-decoration:none;
+    font-weight: 800;
+    background:#f3fff3;
+}
+
+.filter-pill.active{
+    background:#2d7a2d;
+    color:#fff;
+}
+
+.review-list{
+    display:flex;
+    flex-direction:column;
+    gap: 18px;
+}
+
+.review-card{
+    background: #d9d9d9;
+    border: 2px solid #5b5b5b;
+    border-radius: 8px;
+    padding: 16px 16px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.25);
+}
+
+.review-card p{
+    margin: 6px 0;
+    font-weight: 700;
+    color:#222;
+}
+
+@media (max-width: 1000px){
+    .profile-columns{ grid-template-columns: 1fr; }
+    .divider{ display:none; }
+    .profile-title{ font-size: 36px; }
+}
