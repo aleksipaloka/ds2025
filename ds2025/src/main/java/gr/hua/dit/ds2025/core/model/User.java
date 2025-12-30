@@ -1,19 +1,16 @@
 package gr.hua.dit.ds2025.core.model;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
 
-    //columns
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
-
 
     @Column
     private String name;
@@ -34,26 +31,38 @@ public class User {
     @Column(name = "roles", nullable = false, length = 20)
     private Role role;
 
-    @OneToMany(mappedBy = "driver", cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST})
+    // ✅ Soft delete flag
+    @Column(nullable = false)
+    private boolean enabled = true;
+
+    @OneToMany(mappedBy = "driver", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Trip> tripsAsDriver;
 
     @ManyToMany(mappedBy = "passengers")
     private List<Trip> tripsAsPassenger;
 
-    @OneToMany(mappedBy = "reviewer", cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST})
+    @OneToMany(mappedBy = "reviewer", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Review> reviewsWritten;
 
-    @OneToMany(mappedBy = "reviewee", cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST})
+    @OneToMany(mappedBy = "reviewee", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Review> reviewsConcerning;
 
-    //constructors
-    public User(){}
+    public User() {}
 
-    public User(long id, String name, String lastName, String username, String email, String password, Role role,
-                List<Trip> tripsAsDriver, List<Trip> tripsAsPassenger, List<Review> reviewsWritten, List<Review> reviewsConcerning) {
+    public User(
+            Long id,
+            String name,
+            String lastName,
+            String username,
+            String email,
+            String password,
+            Role role,
+            boolean enabled,
+            List<Trip> tripsAsDriver,
+            List<Trip> tripsAsPassenger,
+            List<Review> reviewsWritten,
+            List<Review> reviewsConcerning
+    ) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -61,14 +70,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.enabled = enabled;
         this.tripsAsDriver = tripsAsDriver;
         this.tripsAsPassenger = tripsAsPassenger;
         this.reviewsWritten = reviewsWritten;
         this.reviewsConcerning = reviewsConcerning;
     }
 
-    //setters & getters
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -122,6 +131,14 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public List<Trip> getTripsAsDriver() {

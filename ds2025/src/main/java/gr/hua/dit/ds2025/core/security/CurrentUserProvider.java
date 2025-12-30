@@ -24,10 +24,4 @@ public class CurrentUserProvider {
     public CurrentUser requireCurrentUser() {
         return this.getCurrentUser().orElseThrow(() -> new SecurityException("not authenticated"));
     }
-
-    public long requiredStudentId() {
-        final var currentUser = this.requireCurrentUser();
-        if (currentUser.role() != Role.USER) throw new SecurityException("User role required");
-        return currentUser.id();
-    }
 }

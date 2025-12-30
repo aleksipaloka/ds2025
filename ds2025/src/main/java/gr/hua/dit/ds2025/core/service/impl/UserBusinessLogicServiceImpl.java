@@ -51,9 +51,6 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
     public CreateUserResult createUser(final CreateUserRequest createUserRequest, final boolean notify) {
         if (createUserRequest == null) throw new NullPointerException();
 
-        // `CreateUserRequest` validation.
-        // --------------------------------------------------
-
         final Set<ConstraintViolation<CreateUserRequest>> requestViolations
                 = this.validator.validate(createUserRequest);
         if (!requestViolations.isEmpty()) {
@@ -68,17 +65,11 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
             return CreateUserResult.fail(sb.toString());
         }
 
-        // Unpack (we assume valid `CreateUserRequest` instance)
-        // --------------------------------------------------
-
         final String username = createUserRequest.username().strip(); // remove whitespaces
         final String name = createUserRequest.name().strip();
         final String lastName = createUserRequest.lastName().strip();
         final String email = createUserRequest.email().strip();
         final String password = createUserRequest.password();
-
-        // Advanced mobile phone number validation.
-        // --------------------------------------------------
 
         if (this.userRepository.existsByUsernameIgnoreCase(username)) {
             return CreateUserResult.fail("Username already registered");
@@ -88,12 +79,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
             return CreateUserResult.fail("Email Address already registered");
         }
 
-        // --------------------------------------------------
-
         final String Password = this.passwordEncoder.encode(password);
-
-        // Instantiate user.
-        // --------------------------------------------------
 
         User user = new User();
         user.setId(null); // auto generated
@@ -136,4 +122,30 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
 
         return CreateUserResult.success(userView);
     }
+
+    @Transactional
+    @Override
+    public CreateUserResult createAdmin(final String name, final String lastName, final String username,
+                                        final String email, final String rawPassword) {
+        if (this.userRepository.existsByUsernameIgnoreCase(username)) {
+            return CreateUserResult.fail("Admin username already exists");
+        }
+
+        if (this.userRepository.existsByEmailIgnoreCase(email)) {
+            return CreateUserResult.fail("Admin email already exists");
+        }
+
+        User user = new User();
+        user.setUsername(username);
+        user.setName(name);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPassword(passwordEncoder.encode(rawPassword));
+        user.setRole(Role.ADMIN); // 🔥 ΜΟΝΟ ΕΔΩ ΜΠΑΙΝΕΙ ADMIN
+
+        user = userRepository.save(user);
+
+        return CreateUserResult.success(userMapper.convertUserToUserView(user));
+    }
+
 }

@@ -3,6 +3,7 @@ package gr.hua.dit.ds2025.core.security;
 import gr.hua.dit.ds2025.core.model.User;
 import gr.hua.dit.ds2025.core.repositories.UserRepository;
 import org.jspecify.annotations.NonNull;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,6 +27,9 @@ public class ApplicationUserDetailsService implements UserDetailsService {
                 .orElse(null);
         if (user == null) {
             throw new UsernameNotFoundException("Person with username" + username + " does not exist");
+        }
+        if (!user.isEnabled()) {
+            throw new DisabledException("User account is deactivated");
         }
         return new ApplicationUserDetails(
                 user.getId(),

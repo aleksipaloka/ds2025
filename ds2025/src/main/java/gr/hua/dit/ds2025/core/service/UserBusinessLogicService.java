@@ -11,4 +11,7 @@ public interface UserBusinessLogicService {
     default CreateUserResult createUser(final CreateUserRequest createUserRequest) {
         return this.createUser(createUserRequest, true);
     }
+
+    CreateUserResult createAdmin(String name, String lastName, String username, String email, String rawPassword);
+
 }

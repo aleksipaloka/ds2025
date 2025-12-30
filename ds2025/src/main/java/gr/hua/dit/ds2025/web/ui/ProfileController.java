@@ -56,7 +56,6 @@ public class ProfileController {
         final List<TripView> asPassenger = tripBusinessLogicService.getTripsAsPassenger();
         for (TripView t : asPassenger) pastTrips.add(new PastTripItem(t, "Passenger"));
 
-        // Sort by departureTime desc (αν είναι null, πάει κάτω)
         pastTrips.sort(Comparator.comparing(
                 (PastTripItem pt) -> pt.trip().departureTime(),
                 Comparator.nullsLast(Comparator.naturalOrder())
