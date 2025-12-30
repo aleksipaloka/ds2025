@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GreenRide - Trip Details</title>
+
+  <link rel="stylesheet" th:href="@{/css/greenride.css}">
+  <link rel="stylesheet" th:href="@{/css/trip-details.css}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="leaf">🍃</span>
+    <span class="name">GreenRide</span>
+  </div>
+
+  <div class="top-actions">
+    <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/login}">Login</a>
+    <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/register}">Register</a>
+
+    <a class="pill-btn" th:if="${loggedIn == true}" th:href="@{/profile}">Profile</a>
+
+    <form th:if="${loggedIn == true}" th:action="@{/logout}" method="post" class="logout-form">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <button type="submit" class="pill-btn">Logout</button>
+    </form>
+  </div>
+</header>
+
+<main class="td-page">
+
+  <h1 class="td-name" th:text="${displayName}">Name Surname</h1>
+
+  <div class="td-center">
+    <h2 class="td-title">Trip Details</h2>
+
+    <div class="td-card">
+
+      <div class="td-driver-line">
+        <div>
+          <strong>Driver:</strong>
+          <span th:text="${trip.driver() != null ? trip.driver().username() : '-'}">Driver</span>
+        </div>
+
+        <!-- ✅ Review driver -> /reviews/new?revieweeId=...&tripId=... -->
+        <!-- hides if guest OR if reviewing yourself -->
+        <a class="review-btn"
+           th:if="${loggedIn == true
+                 and reviewEnabled == true
+                 and trip.driver() != null
+                 and currentUserId != null
+                 and trip.driver().id() != null
+                 and trip.driver().id() != currentUserId}"
+           th:href="@{/reviews/new(revieweeId=${trip.driver().id()}, tripId=${trip.id()})}">
+          Review
+        </a>
+
+      </div>
+
+      <div class="td-route"
+           th:text="${trip.startingPoint() + ' - ' + trip.destination()}">
+        Starting Point - Destination
+      </div>
+
+      <div class="td-time">
+        <strong>Departure Time:</strong>
+        <span th:text="${trip.departureTime() != null ? #temporals.format(trip.departureTime(), 'dd/MM/yyyy HH:mm') : '-'}">-</span>
+      </div>
+
+      <div class="td-passengers">
+        <strong>Passenger List:</strong>
+
+        <ol class="passenger-list">
+          <li th:each="p : ${trip.passengers()}">
+            <span th:text="${p.username()}">Passenger</span>
+
+            <!-- ✅ Review passenger -> /reviews/new?revieweeId=...&tripId=... -->
+            <!-- hides if reviewing yourself -->
+            <a class="review-btn small"
+               th:if="${loggedIn == true
+                   and reviewEnabled == true
+                   and currentUserId != null
+                   and p.id() != null
+                   and p.id() != currentUserId}"
+               th:href="@{/reviews/new(revieweeId=${p.id()}, tripId=${trip.id()})}">
+              Review
+            </a>
+
+          </li>
+
+          <li th:if="${trip.passengers() == null || #lists.isEmpty(trip.passengers())}">
+            <span>No passengers yet</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <a class="back-link" th:href="@{/profile}">← Back</a>
+  </div>
+
+</main>
+
+</body>
+</html>

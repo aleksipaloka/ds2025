@@ -1,0 +1,99 @@
+.td-page{
+    background:#fff;
+    min-height: calc(100vh - 72px);
+    padding: 26px 26px 40px;
+}
+
+.td-name{
+    font-size: 44px;
+    font-weight: 900;
+    margin: 12px 0 42px;
+}
+
+.td-center{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 12px;
+}
+
+.td-title{
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0 0 10px;
+}
+
+.td-card{
+    width: 420px;
+    background:#d9d9d9;
+    border: 2px solid #666;
+    border-radius: 10px;
+    padding: 18px 18px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+}
+
+.td-driver-line{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 12px;
+    font-weight: 900;
+}
+
+.td-route{
+    margin-top: 18px;
+    font-weight: 900;
+}
+
+.td-time{
+    margin-top: 18px;
+    font-weight: 900;
+}
+
+.td-passengers{
+    margin-top: 18px;
+    font-weight: 900;
+}
+
+.passenger-list{
+    margin: 10px 0 0 20px;
+    padding: 0;
+}
+
+.passenger-list li{
+    margin: 8px 0;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    font-weight: 900;
+}
+
+.review-btn{
+    display:inline-block;
+    border:none;
+    background:#5cb85c;
+    color:#0f2b12;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 10px;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+}
+
+.review-btn.small{
+    padding: 4px 10px;
+    font-size: 13px;
+}
+
+.review-btn:hover{ filter: brightness(0.98); }
+
+.back-link{
+    margin-top: 16px;
+    font-weight: 900;
+    color:#2d7a2d;
+    text-decoration:none;
+}
+
+
+

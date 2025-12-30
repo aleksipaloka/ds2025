@@ -18,7 +18,17 @@
 
     <div class="top-actions">
         <a class="pill-btn" th:href="@{/}">Home</a>
-        <a class="pill-btn" th:href="@{/logout}">Logout</a>
+
+        <a class="pill-btn"
+           th:if="${isAdmin == true}"
+           th:href="@{/admin/reviews}">
+            Admin Reviews
+        </a>
+
+        <form th:action="@{/logout}" method="post" class="logout-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" class="pill-btn">Logout</button>
+        </form>
     </div>
 </header>
 
@@ -54,8 +64,8 @@
                         </div>
 
                         <div class="trip-line"
-                             th:text="${'Available Seats: ' + pt.trip().availableSeats()}">
-                            Available Seats: null
+                             th:text="${'Passengers: ' + (pt.trip().passengers() != null ? pt.trip().passengers().size() : 0)}">
+                            Passengers: 0
                         </div>
                     </div>
 
@@ -107,8 +117,6 @@
             <div class="review-list">
 
                 <div class="review-card" th:each="r : ${reviews}">
-                    <p><strong>Review Id:</strong> <span th:text="${r.id()}">-</span></p>
-
                     <p>
                         <strong>Reviewer:</strong>
                         <span th:text="${r.reviewer() != null ? r.reviewer().username() : '-'}">-</span>

@@ -126,7 +126,9 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
         final int rating = createReviewRequest.rating();
         final String comments = createReviewRequest.comments();
 
-        // --------------------------------------------------
+        if (reviewerId == revieweeId) {
+            throw new IllegalArgumentException("You cannot review yourself.");
+        }
 
         final User reviewer = this.userRepository.findById(reviewerId)
                 .orElseThrow(() -> new IllegalArgumentException("reviewer not found"));

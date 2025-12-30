@@ -163,7 +163,7 @@ body{
     justify-content:flex-end;
 }
 
-.btn-new{
+.new-trip-btn{
     background: #cfcfcf;
     color: var(--green-dark);
     border: 1px solid rgba(0,0,0,0.15);
@@ -172,7 +172,7 @@ body{
     font-weight: 900;
 }
 
-.btn-new:hover{ filter: brightness(0.98); }
+.new-trip-btn:hover{ filter: brightness(0.98); }
 
 @media (max-width: 1000px){
     .columns{ grid-template-columns: 1fr; }

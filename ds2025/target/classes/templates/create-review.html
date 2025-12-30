@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GreenRide - Review</title>
+
+    <link rel="stylesheet" th:href="@{/css/greenride.css}">
+    <link rel="stylesheet" th:href="@{/css/review.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="leaf">🍃</span>
+        <span class="name">GreenRide</span>
+    </div>
+
+    <div class="top-actions">
+        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/login}">Login</a>
+        <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/register}">Register</a>
+
+        <a class="pill-btn" th:if="${loggedIn == true}" th:href="@{/profile}">Profile</a>
+
+        <form th:if="${loggedIn == true}" th:action="@{/logout}" method="post" class="logout-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" class="pill-btn">Logout</button>
+        </form>
+    </div>
+</header>
+
+<main class="review-page">
+
+    <div class="review-wrap">
+        <h1 class="review-title">Review</h1>
+
+        <!-- ✅ IMPORTANT: th:object MUST be createReviewForm -->
+        <div class="review-card">
+            <form th:action="@{/reviews/new}" method="post" th:object="${createReviewForm}">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                <input type="hidden" th:field="*{revieweeId}"/>
+                <input type="hidden" th:field="*{tripId}"/>
+
+                <label class="lbl">Rating (1-5)</label>
+                <input class="inp small" type="number" min="1" max="5" th:field="*{rating}"/>
+                <div class="err" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></div>
+
+                <label class="lbl">Comments</label>
+                <textarea class="inp area" rows="6" th:field="*{comments}"></textarea>
+                <div class="err" th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}"></div>
+
+                <button class="confirm-btn" type="submit">Confirm</button>
+
+                <div class="err global" th:if="${error}" th:text="${error}"></div>
+            </form>
+        </div>
+    </div>
+
+    <a class="back-btn"
+       th:href="${createReviewForm.tripId() != null}
+                 ? @{/trips/{id}(id=${createReviewForm.tripId()})}
+                 : @{/profile}">
+        ← Back
+    </a>
+
+</main>
+
+</body>
+</html>

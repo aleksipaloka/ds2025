@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GreenRide - Admin Reviews</title>
+
+  <link rel="stylesheet" th:href="@{/css/greenride.css}">
+  <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="leaf">🍃</span>
+    <span class="name">GreenRide</span>
+  </div>
+
+  <div class="top-actions">
+    <a class="pill-btn" th:href="@{/}">Home</a>
+    <a class="pill-btn" th:href="@{/profile}">Profile</a>
+
+    <form th:action="@{/logout}" method="post" class="logout-form">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <button type="submit" class="pill-btn">Logout</button>
+    </form>
+  </div>
+</header>
+
+<main class="admin-page">
+  <h1 class="admin-title">Admin Review Center</h1>
+
+  <div class="flash ok" th:if="${message}" th:text="${message}">OK</div>
+  <div class="flash err" th:if="${error}" th:text="${error}">ERROR</div>
+
+  <div class="admin-card">
+    <table class="admin-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Reviewer</th>
+        <th>Reviewee</th>
+        <th>Rating</th>
+        <th>Comments</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="r : ${reviews}">
+        <td th:text="${r.id()}">1</td>
+
+        <td>
+          <div class="u-line">
+            <span th:text="${r.reviewer() != null ? r.reviewer().username() : '-'}">reviewer</span>
+          </div>
+          <div class="u-actions" th:if="${r.reviewer() != null}">
+            <a class="btn small"
+               th:href="@{/admin/users/{id}(id=${r.reviewer().id()})}">
+              Reviewer Profile
+            </a>
+            <form class="inline"
+                  th:action="@{/admin/users/{id}/delete(id=${r.reviewer().id()})}"
+                  method="post">
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+              <button class="btn danger small" type="submit">Delete</button>
+            </form>
+          </div>
+        </td>
+
+        <td>
+          <div class="u-line">
+            <span th:text="${r.reviewee() != null ? r.reviewee().username() : '-'}">reviewee</span>
+          </div>
+          <div class="u-actions" th:if="${r.reviewee() != null}">
+            <a class="btn small"
+               th:href="@{/admin/users/{id}(id=${r.reviewee().id()})}">
+              Reviewee Profile
+            </a>
+            <form class="inline"
+                  th:action="@{/admin/users/{id}/delete(id=${r.reviewee().id()})}"
+                  method="post">
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+              <button class="btn danger small" type="submit">Delete</button>
+            </form>
+          </div>
+        </td>
+
+        <td th:text="${r.rating()}">5</td>
+        <td th:text="${r.comments()}">Nice</td>
+
+        <td class="actions-col">
+          <!-- (optional) εδώ μπορείς να βάλεις delete review αν φτιάξεις endpoint -->
+          <span class="muted">—</span>
+        </td>
+      </tr>
+
+      <tr th:if="${reviews == null || #lists.isEmpty(reviews)}">
+        <td colspan="6" class="muted">No reviews found.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+</body>
+</html>

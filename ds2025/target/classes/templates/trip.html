@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GreenRide - New Trip</title>
+
+    <link rel="stylesheet" th:href="@{/css/greenride.css}">
+    <link rel="stylesheet" th:href="@{/css/trip.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="leaf">🍃</span>
+        <span class="name">GreenRide</span>
+    </div>
+
+    <div class="top-actions">
+        <a class="pill-btn" th:href="@{/}">Home</a>
+        <a class="pill-btn" th:href="@{/profile}">Profile</a>
+        <a class="pill-btn" th:href="@{/logout}">Logout</a>
+    </div>
+</header>
+
+<main class="page">
+
+    <div class="panel">
+        <h1 class="panel-title">New Trip</h1>
+
+        <div class="panel-inner">
+
+            <div class="alert error" th:if="${error}" th:text="${error}">Error</div>
+
+            <form th:action="@{/trips/new}"
+                  th:object="${createTripForm}"
+                  method="post">
+
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                <label>Starting Point</label>
+                <input type="text" th:field="*{startingPoint}">
+                <div class="field-error" th:if="${#fields.hasErrors('startingPoint')}"
+                     th:errors="*{startingPoint}"></div>
+
+                <label>Destination</label>
+                <input type="text" th:field="*{destination}">
+                <div class="field-error" th:if="${#fields.hasErrors('destination')}"  th:errors="*{destination}"></div>
+
+                <label>Departure Time</label>
+                <input type="datetime-local" th:field="*{departureTime}">
+                <div class="err" th:if="${#fields.hasErrors('departureTime')}" th:errors="*{departureTime}"></div>
+
+
+                <label>Available Seats</label>
+                <input type="number" min="1" th:field="*{availableSeats}">
+                <div class="field-error" th:if="${#fields.hasErrors('availableSeats')}"
+                     th:errors="*{availableSeats}"></div>
+
+                <button type="submit" class="confirm-btn">Confirm</button>
+            </form>
+
+        </div>
+    </div>
+
+    <a class="back-btn" th:href="@{/}">← Back</a>
+
+</main>
+</body>
+</html>

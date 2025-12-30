@@ -1,42 +1,38 @@
 package gr.hua.dit.ds2025.web.ui;
 
-import java.util.List;
-
-import gr.hua.dit.ds2025.core.service.impl.TripBusinessLogicServiceImpl;
+import gr.hua.dit.ds2025.core.service.TripBusinessLogicService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Controller
 public class HomepageController {
 
-    private final TripBusinessLogicServiceImpl tripBusinessLogicService;
+    private final TripBusinessLogicService tripBusinessLogicService;
 
-    public HomepageController(final TripBusinessLogicServiceImpl tripBusinessLogicService) {
+    public HomepageController(final TripBusinessLogicService tripBusinessLogicService) {
         if (tripBusinessLogicService == null) throw new NullPointerException();
         this.tripBusinessLogicService = tripBusinessLogicService;
-    }
-
-    @GetMapping("/test")
-    public String test() {
-        return "homepage";
     }
 
     @GetMapping("/")
     public String showHomepage(Authentication authentication, Model model) {
 
-        boolean loggedIn = AuthUtils.isAuthenticated(authentication);
+        final boolean loggedIn = AuthUtils.isAuthenticated(authentication);
         model.addAttribute("loggedIn", loggedIn);
 
-        // Πρέπει να είναι PUBLIC method (να μη ζητάει authentication)
-        model.addAttribute("availableTrips", tripBusinessLogicService.getPublicAvailableTrips());
+        final LocalDateTime now = LocalDateTime.now();
 
-        // Upcoming μόνο αν logged in
+        model.addAttribute("availableTrips", tripBusinessLogicService.getAvailableTripsForHomepage(now));
+
         if (loggedIn) {
-            model.addAttribute("upcomingTrips", tripBusinessLogicService.getPublicAvailableTrips());
+            model.addAttribute("upcomingTrips", tripBusinessLogicService.getUpcomingTripsForCurrentUser(now));
         } else {
-            model.addAttribute("upcomingTrips", java.util.List.of());
+            model.addAttribute("upcomingTrips", List.of());
         }
 
         return "homepage";

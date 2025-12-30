@@ -42,6 +42,12 @@ public class ProfileController {
         final String displayName = authentication != null ? authentication.getName() : "Profile";
         model.addAttribute("displayName", displayName);
 
+        final boolean isAdmin = authentication != null
+                && authentication.getAuthorities().stream()
+                .anyMatch(a -> "ROLE_ADMIN".equals(a.getAuthority()));
+
+        model.addAttribute("isAdmin", isAdmin);
+
         final List<PastTripItem> pastTrips = new ArrayList<>();
 
         final List<TripView> asDriver = tripBusinessLogicService.getTripsAsDriver();
