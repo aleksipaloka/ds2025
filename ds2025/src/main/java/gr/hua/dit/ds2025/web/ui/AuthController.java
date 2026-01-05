@@ -17,14 +17,14 @@ public class AuthController {
             final Model model
     ) {
         if (AuthUtils.isAuthenticated(authentication)) {
-            return "redirect:/profile";
+            return "redirect:/";
         }
 
         if (request.getParameter("error") != null) {
             model.addAttribute("error", "Invalid email or password.");
         }
         if (request.getParameter("logout") != null) {
-            model.addAttribute("message", "You have been logged out.");
+            return "redirect:/";
         }
         return "login";
     }

@@ -7,17 +7,18 @@
 
     <link rel="stylesheet" th:href="@{/css/greenride.css}">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
 
 <header class="topbar">
-    <div class="brand">
-        <span class="leaf">🍃</span>
+    <a class="brand" th:href="@{/}">
+        <iconify-icon icon="mdi:leaf" width="24" height="24" style="color: #fff"></iconify-icon>
         <span class="name">GreenRide</span>
-    </div>
+    </a>
 
     <div class="top-actions">
-        <a class="pill-btn" th:href="@{/}">Home</a>
 
         <a class="pill-btn" th:if="${isAdmin == true}" th:href="@{/admin/reviews}">
             Admin Reviews
@@ -25,7 +26,7 @@
 
         <form th:action="@{/logout}" method="post" class="logout-form">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-            <button type="submit" class="pill-btn">Logout</button>
+            <button type="submit" class="pill-btn logout-btn">Logout</button>
         </form>
     </div>
 </header>

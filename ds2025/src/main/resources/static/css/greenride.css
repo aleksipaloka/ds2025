@@ -19,6 +19,10 @@ body{
     color: var(--text);
 }
 
+.brand, .pill-btn, .btn, .top-icon, .new-trip-btn{
+    text-decoration: none;
+}
+
 .topbar{
     height:72px;
     background: var(--green);
@@ -38,7 +42,7 @@ body{
     font-size:28px;
 }
 
-.leaf{ font-size:28px; }
+.brand:hover{ opacity: 0.95; }
 
 .top-actions{
     display:flex;
@@ -46,14 +50,31 @@ body{
     gap:14px;
 }
 
+.top-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    cursor:pointer;
+}
+
+.top-icon:hover{ opacity: 0.85; }
+
+.top-icon iconify-icon{ color: inherit; }
+
 .pill-btn{
-    text-decoration:none;
     background:#fff;
     color: var(--green-dark);
     border: 1px solid rgba(0,0,0,0.15);
     padding:10px 16px;
     border-radius:10px;
     font-weight:700;
+    cursor:pointer;
+}
+
+.logout-btn{
+    font-size: 16px;
+    font-weight: 800;
 }
 
 .page{
@@ -125,7 +146,11 @@ body{
     font-weight: 800;
 }
 
-.trip-actions{ display:flex; align-items:center; }
+.trip-actions{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+}
 
 .btn{
     display:inline-block;
@@ -135,7 +160,6 @@ body{
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 2px 0 rgba(0,0,0,0.2);
-    text-decoration:none;
 }
 
 .btn:disabled{
@@ -157,22 +181,30 @@ body{
 
 .btn-danger:hover{ filter: brightness(0.95); }
 
+.btn-details{
+    background: #f0ad4e;
+    color: #fff;
+}
+
+.btn-details:hover{ filter: brightness(0.97); }
+
 .new-trip{
-    margin-top: 28px;
-    display:flex;
-    justify-content:flex-end;
+    position: fixed;
+    bottom: 56px;
+    right: 24px;
+    z-index: 1000;
 }
 
 .new-trip-btn{
-    background: #cfcfcf;
-    color: var(--green-dark);
-    border: 1px solid rgba(0,0,0,0.15);
-    padding: 14px 22px;
-    border-radius: 18px;
+    background: var(--green);
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 30px;
     font-weight: 900;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.25);
 }
 
-.new-trip-btn:hover{ filter: brightness(0.98); }
+.new-trip-btn:hover{ background: var(--green-dark); }
 
 @media (max-width: 1000px){
     .columns{ grid-template-columns: 1fr; }
