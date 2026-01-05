@@ -18,8 +18,11 @@
   </a>
 
   <div class="top-actions">
-    <a class="pill-btn" th:href="@{/}">Home</a>
-    <a class="pill-btn" th:href="@{/profile}">Profile</a>
+    <a class="top-icon" th:href="@{/profile}">
+      <iconify-icon icon="iconamoon:profile-circle-fill"
+                    width="34"
+                    height="34"></iconify-icon>
+    </a>
 
     <form th:action="@{/logout}" method="post" class="logout-form">
       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>

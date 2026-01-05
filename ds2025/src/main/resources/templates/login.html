@@ -1,33 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GreenRide - Login</title>
+
+    <link rel="stylesheet" th:href="@{/css/greenride.css}">
     <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <h1>Login</h1>
+<header class="topbar">
+    <a class="brand" th:href="@{/}">
+        <iconify-icon icon="mdi:leaf" width="24" height="24" style="color: #fff"></iconify-icon>
+        <span class="name">GreenRide</span>
+    </a>
+</header>
 
-    <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
-    <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+<main class="page auth-page">
 
-    <!-- Spring Security default -->
-    <form th:action="@{/login}" method="post">
-        <label>Username</label>
-        <input type="text" name="username" placeholder="username">
+    <div class="auth-wrap">
+        <h1 class="auth-title">Login</h1>
 
-        <label>Password</label>
-        <input type="password" name="password" placeholder="••••••••">
+        <div class="auth-inner">
+            <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+            <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
 
-        <button type="submit">Login</button>
-    </form>
+            <form th:action="@{/login}" method="post">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="username">
 
-    <div class="helper">
-        <a th:href="@{/register}">No account? Register</a>
-        <a th:href="@{/}">Back to homepage</a>
+                <label>Password</label>
+                <input type="password" name="password" placeholder="••••••••">
+
+                <button class="auth-btn" type="submit">Login</button>
+            </form>
+
+            <div class="helper">
+                <a th:href="@{/register}">No account? Register</a>
+            </div>
+        </div>
     </div>
-</div>
+
+    <a class="back-btn" th:href="@{/}">← Back</a>
+
+</main>
 
 </body>
 </html>

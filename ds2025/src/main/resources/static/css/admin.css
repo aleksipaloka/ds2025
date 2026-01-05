@@ -22,11 +22,16 @@
     width:100%;
     border-collapse: collapse;
     background:#fff;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow:hidden;
+
+    /* ⬇️ ΝΕΟ: card-like feeling */
+    border: 2px solid var(--border);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.25);
 }
 
-.admin-table th, .admin-table td{
+.admin-table th,
+.admin-table td{
     padding: 12px 10px;
     border-bottom: 1px solid rgba(0,0,0,0.08);
     vertical-align: top;
@@ -36,6 +41,16 @@
     text-align:left;
     font-weight: 900;
     background:#e8eef0;
+    color:#222;
+    font-size: 14px;
+}
+
+.admin-table tbody tr:nth-child(even){
+    background:#f6f8f9;
+}
+
+.admin-table tbody tr:hover{
+    background:#eef4f6;
 }
 
 .u-line{
@@ -63,7 +78,11 @@
     cursor:pointer;
 }
 
-.btn.small{ padding: 6px 10px; font-size: 13px; }
+.btn.small{
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+}
 
 .btn.danger{
     background:#d9534f;
@@ -71,7 +90,10 @@
     border-color: rgba(0,0,0,0.1);
 }
 
-.muted{ color:#666; font-weight: 800; }
+.muted{
+    color:#666;
+    font-weight: 800;
+}
 
 .flash{
     padding: 10px 12px;
@@ -79,5 +101,13 @@
     margin: 10px 0 14px;
     font-weight: 900;
 }
-.flash.ok{ background:#e6f4ea; color:#145a2a; }
-.flash.err{ background:#fde7e9; color:#8a1020; }
+
+.flash.ok{
+    background:#e6f4ea;
+    color:#145a2a;
+}
+
+.flash.err{
+    background:#fde7e9;
+    color:#8a1020;
+}

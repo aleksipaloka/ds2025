@@ -2,7 +2,7 @@
     --green: #58a86a;
     --green-dark: #3c7f4b;
     --bg: #ffffff;
-    --page-bg: #f4f6f8;
+    --page-bg: #ffffff;
     --card: #d9d9d9;
     --border: #5b5b5b;
     --text: #111;
@@ -70,6 +70,18 @@ body{
     border-radius:10px;
     font-weight:700;
     cursor:pointer;
+}
+
+.admin-btn{
+    background: #fff;
+    color: var(--danger);
+    border:1px solid var(--danger);
+}
+
+.admin-btn:hover{
+    background: rgb(234, 223, 223);
+    color: var(--danger);
+    border:1px solid var(--danger);
 }
 
 .logout-btn{

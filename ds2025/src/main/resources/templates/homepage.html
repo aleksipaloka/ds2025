@@ -16,6 +16,9 @@
     </a>
 
     <div class="top-actions">
+
+
+
         <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/login}">Login</a>
 
         <a class="top-icon" th:if="${loggedIn == true}" th:href="@{/profile}">
@@ -24,9 +27,11 @@
                           height="34"></iconify-icon>
         </a>
 
+        <a class="pill-btn admin-btn" th:if="${isAdmin == true}" th:href="@{/admin/reviews}">
+            Admin Reviews
+        </a>
 
-
-        -<form th:if="${loggedIn == true}" th:action="@{/logout}" method="post" class="logout-form">
+        <form th:if="${loggedIn == true}" th:action="@{/logout}" method="post" class="logout-form">
             <button type="submit" class="pill-btn logout-btn">Logout</button>
         </form>
     </div>

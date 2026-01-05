@@ -5,6 +5,7 @@ import gr.hua.dit.ds2025.core.security.CurrentUserProvider;
 import gr.hua.dit.ds2025.core.service.TripBusinessLogicService;
 import gr.hua.dit.ds2025.core.service.model.TripView;
 import gr.hua.dit.ds2025.core.weather.WeatherService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,7 @@ public class TripDetailsController {
     public String tripDetails(
             @PathVariable("id") long id,
             Authentication authentication,
+            HttpServletRequest request,
             Model model
     ) {
         final boolean loggedIn = AuthUtils.isAuthenticated(authentication);
@@ -46,6 +48,11 @@ public class TripDetailsController {
 
         final String displayName = authentication != null ? authentication.getName() : "Guest";
         model.addAttribute("displayName", displayName);
+
+        String referer = request.getHeader("Referer");
+
+        model.addAttribute("backUrl",
+                referer != null ? referer : "/");
 
         Long currentUserId = null;
         if (loggedIn) {

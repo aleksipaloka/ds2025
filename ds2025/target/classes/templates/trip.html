@@ -13,15 +13,21 @@
 <body>
 
 <header class="topbar">
-    <div class="brand">
+    <a class="brand" th:href="@{/}">
         <iconify-icon icon="mdi:leaf" width="24" height="24" style="color: #fff"></iconify-icon>
         <span class="name">GreenRide</span>
-    </div>
+    </a>
 
     <div class="top-actions">
-        <a class="pill-btn" th:href="@{/}">Home</a>
-        <a class="pill-btn" th:href="@{/profile}">Profile</a>
-        <a class="pill-btn" th:href="@{/logout}">Logout</a>
+
+        <a class="top-icon" th:href="@{/profile}">
+            <iconify-icon icon="iconamoon:profile-circle-fill" width="34" height="34"></iconify-icon>
+        </a>
+
+        <form th:action="@{/logout}" method="post" class="logout-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" class="pill-btn logout-btn">Logout</button>
+        </form>
     </div>
 </header>
 
@@ -65,7 +71,10 @@
         </div>
     </div>
 
-    <a class="back-btn" th:href="@{/}">← Back</a>
+    <a class="back-btn" th:href="@{/}">
+        <iconify-icon icon="mdi:arrow-left"></iconify-icon>
+        Back
+    </a>
 
 </main>
 </body>

@@ -25,6 +25,12 @@ public class HomepageController {
         final boolean loggedIn = AuthUtils.isAuthenticated(authentication);
         model.addAttribute("loggedIn", loggedIn);
 
+        final boolean isAdmin = authentication != null
+                && authentication.getAuthorities().stream()
+                .anyMatch(a -> "ROLE_ADMIN".equals(a.getAuthority()));
+
+        model.addAttribute("isAdmin", isAdmin);
+
         final LocalDateTime now = LocalDateTime.now();
 
         model.addAttribute("availableTrips", tripBusinessLogicService.getAvailableTripsForHomepage(now));

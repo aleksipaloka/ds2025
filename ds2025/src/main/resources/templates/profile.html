@@ -19,11 +19,6 @@
     </a>
 
     <div class="top-actions">
-
-        <a class="pill-btn" th:if="${isAdmin == true}" th:href="@{/admin/reviews}">
-            Admin Reviews
-        </a>
-
         <form th:action="@{/logout}" method="post" class="logout-form">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <button type="submit" class="pill-btn logout-btn">Logout</button>

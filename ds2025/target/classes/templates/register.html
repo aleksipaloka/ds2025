@@ -1,47 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Register</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GreenRide - Register</title>
+
+  <link rel="stylesheet" th:href="@{/css/greenride.css}">
   <link rel="stylesheet" th:href="@{/css/auth.css}">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
 
-<div class="container">
-  <h1>Register</h1>
+<header class="topbar">
+  <a class="brand" th:href="@{/}">
+    <iconify-icon icon="mdi:leaf" width="24" height="24" style="color: #fff"></iconify-icon>
+    <span class="name">GreenRide</span>
+  </a>
+</header>
 
-  <div th:if="${errormessage}" class="alert alert-error" th:text="${errormessage}"></div>
+<main class="page auth-page">
 
-  <form th:action="@{/register}" th:object="${createUserRequest}" method="post">
+  <div class="auth-wrap">
+    <h1 class="auth-title">Register</h1>
 
-    <label>Name</label>
-    <input type="text" th:field="*{name}">
-    <div class="field-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <div class="auth-inner">
+      <div th:if="${errormessage}" class="alert alert-error" th:text="${errormessage}"></div>
 
-    <label>Last name</label>
-    <input type="text" th:field="*{lastName}">
-    <div class="field-error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+      <form th:action="@{/register}" th:object="${createUserRequest}" method="post">
 
-    <label>Username</label>
-    <input type="text" th:field="*{username}">
-    <div class="field-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        <label>Name</label>
+        <input type="text" th:field="*{name}">
+        <div class="field-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 
-    <label>Email</label>
-    <input type="email" th:field="*{email}">
-    <div class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        <label>Last name</label>
+        <input type="text" th:field="*{lastName}">
+        <div class="field-error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
 
-    <label>Password</label>
-    <!-- ΝΑΙ: είναι *{password} γιατί στο record είναι String password (κεφαλαίο P) -->
-    <input type="password" th:field="*{password}">
-    <div class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        <label>Username</label>
+        <input type="text" th:field="*{username}">
+        <div class="field-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
 
-    <button type="submit">Create account</button>
-  </form>
+        <label>Email</label>
+        <input type="email" th:field="*{email}">
+        <div class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 
-  <div class="helper">
-    <a th:href="@{/login}">Already have an account? Login</a>
-    <a th:href="@{/}">Back to homepage</a>
+        <label>Password</label>
+        <input type="password" th:field="*{password}">
+        <div class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+        <button class="auth-btn" type="submit">Create account</button>
+      </form>
+
+      <div class="helper">
+        <a th:href="@{/login}">Already have an account? Login</a>
+      </div>
+    </div>
   </div>
-</div>
+
+  <a class="back-btn" th:href="@{/}">← Back</a>
+
+</main>
 
 </body>
 </html>

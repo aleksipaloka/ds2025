@@ -9,10 +9,10 @@
 
 .panel{
     width: 520px;
-    background: #3f7f4b;
+    background: var(--green-dark);
     border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+    padding: 24px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.25);
 }
 
 .panel-title{
@@ -45,20 +45,29 @@ input{
     font-size: 14px;
 }
 
-.confirm-btn{
-    margin: 16px auto 0;
-    display: block;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 999px;
-    background: #f0ad4e;
-    color: #fff;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+input:focus{
+    border-color: var(--green);
+    box-shadow: 0 0 0 2px rgba(88,168,106,0.2);
 }
 
-.confirm-btn:hover{ filter: brightness(0.97); }
+.confirm-btn{
+    margin: 20px auto 0;
+    display: block;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.25);
+}
+
+.confirm-btn:hover{
+    background: var(--green-dark);
+}
+
 
 .field-error{
     margin-top: 6px;
@@ -78,13 +87,29 @@ input{
 
 .back-btn{
     position: absolute;
-    right: 40px;
-    bottom: 40px;
-    background: #d9d9d9;
-    color: #2d7a2d;
+    left: 24px;
+    bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    color: var(--green-dark);
+    padding: 8px 12px;
+    border: 2px solid var(--green-dark); /* 👈 ΕΔΩ */
+
+    border-radius: 8px;
+    font-weight: 800;
     text-decoration: none;
-    padding: 12px 18px;
-    border-radius: 16px;
-    font-weight: 900;
-    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
 }
+
+.back-btn:hover{
+    background: rgba(60,127,75,0.1);
+    border-color: var(--green);
+}
+
+
+.back-btn:active{
+    transform: translateY(1px);
+}
+
