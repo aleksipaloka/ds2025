@@ -60,8 +60,8 @@ public class TripController {
             final CreateTripRequest req = new CreateTripRequest(
                     currentUser.id(),
                     form.availableSeats(),
-                    form.destination(),
                     form.startingPoint(),
+                    form.destination(),
                     form.departureTime()
             );
 

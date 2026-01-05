@@ -4,6 +4,7 @@ import gr.hua.dit.ds2025.core.security.CurrentUser;
 import gr.hua.dit.ds2025.core.security.CurrentUserProvider;
 import gr.hua.dit.ds2025.core.service.TripBusinessLogicService;
 import gr.hua.dit.ds2025.core.service.model.TripView;
+import gr.hua.dit.ds2025.core.weather.WeatherService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,15 +18,21 @@ public class TripDetailsController {
 
     private final TripBusinessLogicService tripBusinessLogicService;
     private final CurrentUserProvider currentUserProvider;
+    private final WeatherService weatherService;
+
 
     public TripDetailsController(
             final TripBusinessLogicService tripBusinessLogicService,
-            final CurrentUserProvider currentUserProvider
+            final CurrentUserProvider currentUserProvider,
+            final WeatherService weatherService
+
     ) {
         if (tripBusinessLogicService == null) throw new NullPointerException();
         if (currentUserProvider == null) throw new NullPointerException();
+        if (weatherService == null) throw new NullPointerException();
         this.tripBusinessLogicService = tripBusinessLogicService;
         this.currentUserProvider = currentUserProvider;
+        this.weatherService = weatherService;
     }
 
     @GetMapping("/trips/{id}")
@@ -56,7 +63,16 @@ public class TripDetailsController {
 
         model.addAttribute("trip", trip);
 
-        // ✅ Reviews allowed only after departure time
+        try {
+            final String place = trip.startingPoint();
+
+            if (place != null && !place.isBlank()) {
+                model.addAttribute("weather", weatherService.getCurrentWeatherByPlace(place));
+            }
+        } catch (Exception e) {
+            model.addAttribute("weatherError", "Could not load weather info.");
+        }
+
         final LocalDateTime now = LocalDateTime.now();
         final boolean reviewEnabled = trip.departureTime() != null && now.isAfter(trip.departureTime());
         model.addAttribute("reviewEnabled", reviewEnabled);

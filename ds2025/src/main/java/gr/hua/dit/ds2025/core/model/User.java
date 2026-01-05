@@ -31,7 +31,6 @@ public class User {
     @Column(name = "roles", nullable = false, length = 20)
     private Role role;
 
-    // ✅ Soft delete flag
     @Column(nullable = false)
     private boolean enabled = true;
 

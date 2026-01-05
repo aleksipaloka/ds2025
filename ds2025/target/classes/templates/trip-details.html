@@ -19,7 +19,6 @@
   <div class="top-actions">
     <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/login}">Login</a>
     <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/register}">Register</a>
-
     <a class="pill-btn" th:if="${loggedIn == true}" th:href="@{/profile}">Profile</a>
 
     <form th:if="${loggedIn == true}" th:action="@{/logout}" method="post" class="logout-form">
@@ -43,9 +42,6 @@
           <strong>Driver:</strong>
           <span th:text="${trip.driver() != null ? trip.driver().username() : '-'}">Driver</span>
         </div>
-
-        <!-- ✅ Review driver -> /reviews/new?revieweeId=...&tripId=... -->
-        <!-- hides if guest OR if reviewing yourself -->
         <a class="review-btn"
            th:if="${loggedIn == true
                  and reviewEnabled == true
@@ -69,6 +65,24 @@
         <span th:text="${trip.departureTime() != null ? #temporals.format(trip.departureTime(), 'dd/MM/yyyy HH:mm') : '-'}">-</span>
       </div>
 
+      <div class="td-weather">
+        <strong>Weather at start:</strong>
+
+        <div th:if="${weather != null}" class="td-weather-line">
+          <span class="td-weather-item">🌡 <span th:text="${weather.temperature()}"></span>°C</span>
+          <span class="td-weather-item">💨 <span th:text="${weather.windspeed()}"></span> km/h</span>
+          <span class="td-weather-item">☁️ <span th:text="${weather.description()}"></span></span>
+        </div>
+
+        <div th:if="${weather == null and weatherError != null}" class="td-weather-error"
+             th:text="${weatherError}">
+          Could not load weather.
+        </div>
+
+        <div th:if="${weather == null and weatherError == null}" class="td-weather-muted">
+          Weather not available.
+        </div>
+      </div>
       <div class="td-passengers">
         <strong>Passenger List:</strong>
 
@@ -76,8 +90,6 @@
           <li th:each="p : ${trip.passengers()}">
             <span th:text="${p.username()}">Passenger</span>
 
-            <!-- ✅ Review passenger -> /reviews/new?revieweeId=...&tripId=... -->
-            <!-- hides if reviewing yourself -->
             <a class="review-btn small"
                th:if="${loggedIn == true
                    and reviewEnabled == true

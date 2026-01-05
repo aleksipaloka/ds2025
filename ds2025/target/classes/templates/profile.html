@@ -19,7 +19,6 @@
     <div class="top-actions">
         <a class="pill-btn" th:href="@{/}">Home</a>
 
-        <!-- Admin-only -->
         <a class="pill-btn" th:if="${isAdmin == true}" th:href="@{/admin/reviews}">
             Admin Reviews
         </a>
@@ -34,7 +33,6 @@
 <main class="profile-page">
     <h1 class="profile-title" th:text="${displayName}">Name Surname</h1>
 
-    <!-- Admin viewing another user -->
     <form th:if="${adminViewingUserId != null}"
           th:action="@{/admin/users/{id}/delete(id=${adminViewingUserId})}"
           method="post"
@@ -47,7 +45,6 @@
 
     <div class="profile-columns">
 
-        <!-- ================= LEFT: PAST TRIPS ================= -->
         <section class="profile-col">
             <h2 class="profile-subtitle">Past Trips</h2>
 
