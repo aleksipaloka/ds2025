@@ -1,24 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Logout</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GreenRide - Logout</title>
+
+    <link rel="stylesheet" th:href="@{/css/greenride.css}">
     <link rel="stylesheet" th:href="@{/css/auth.css}">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <h1>Logout</h1>
-    <p>Are you sure you want to logout?</p>
+<header class="topbar">
+    <a class="brand" th:href="@{/}">
+        <iconify-icon icon="mdi:leaf" width="24" height="24" style="color: #fff"></iconify-icon>
+        <span class="name">GreenRide</span>
+    </a>
+</header>
 
-    <form th:action="@{/logout}" method="post">
-        <button type="submit" class="danger">Confirm Logout</button>
-    </form>
+<main class="page auth-page">
 
-    <div class="helper">
-        <a th:href="@{/profile}">Cancel</a>
-        <a th:href="@{/}">Back to homepage</a>
+    <div class="auth-wrap">
+        <h1 class="auth-title">Logout</h1>
+
+        <div class="auth-inner logout-inner">
+            <p class="logout-text">
+                Are you sure you want to logout?
+            </p>
+
+            <form th:action="@{/logout}" method="post">
+                <button class="auth-btn danger" type="submit">
+                    Confirm Logout
+                </button>
+            </form>
+
+            <div class="helper logout-helper">
+                <a th:href="@{/profile}">Cancel</a>
+            </div>
+        </div>
     </div>
-</div>
+
+    <a class="back-btn" th:href="@{/}">← Back</a>
+
+</main>
 
 </body>
 </html>
