@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.54">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>4877</IntrospectionStateNumber>
+      <IntrospectionStateNumber>58413</IntrospectionStateNumber>
       <ServerVersion>18.1</ServerVersion>
       <StartupTime>1766241962</StartupTime>
       <TimeZones>true ACDT
@@ -1401,7 +1401,7 @@ false posixrules
 13229||10|C|G
 13229||-9223372036854775808|U|G
 13229||10|U|G</Grants>
-      <IntrospectionStateNumber>4877</IntrospectionStateNumber>
+      <IntrospectionStateNumber>58413</IntrospectionStateNumber>
       <ObjectId>16389</ObjectId>
       <OwnerName>user</OwnerName>
     </database>
@@ -4938,11 +4938,11 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>4877</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>4877</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>4877</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>58413</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>58413</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>58413</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-12-22.00:24:35</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-01-09.13:44:13</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>759</StateNumber>
       <OwnerName>user</OwnerName>
@@ -5001,5 +5001,321 @@ false posixrules
       <StoredType>bigint|0s</StoredType>
       <OwnerName>user</OwnerName>
     </sequence>
+    <table id="282" parent="275" name="client">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16639</ObjectId>
+      <StateNumber>46407</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <table id="283" parent="275" name="review">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16650</ObjectId>
+      <StateNumber>46414</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <table id="284" parent="275" name="trip">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16656</ObjectId>
+      <StateNumber>46416</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <table id="285" parent="275" name="trip_passengers">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16664</ObjectId>
+      <StateNumber>46417</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <table id="286" parent="275" name="users">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16669</ObjectId>
+      <StateNumber>46414</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>user</OwnerName>
+    </table>
+    <column id="287" parent="282" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>46407</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="288" parent="282" name="name">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>46407</StateNumber>
+      <StoredType>varchar(100)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="289" parent="282" name="roles_csv">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>46407</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="290" parent="282" name="secret">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>46407</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="291" parent="282" name="client_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16648</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>46407</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="292" parent="282" name="uk_client_name">
+      <ColNames>name</ColNames>
+      <ObjectId>16680</ObjectId>
+      <StateNumber>46413</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="293" parent="282" name="client_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16649</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>46407</StateNumber>
+      <UnderlyingIndexId>16648</UnderlyingIndexId>
+    </key>
+    <key id="294" parent="282" name="uk_client_name">
+      <ObjectId>16681</ObjectId>
+      <StateNumber>46413</StateNumber>
+      <UnderlyingIndexId>16680</UnderlyingIndexId>
+    </key>
+    <column id="295" parent="283" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>46408</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="296" parent="283" name="comments">
+      <Position>2</Position>
+      <StateNumber>46408</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="297" parent="283" name="rating">
+      <Position>3</Position>
+      <StateNumber>46408</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="298" parent="283" name="reviewee">
+      <Position>4</Position>
+      <StateNumber>46408</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="299" parent="283" name="reviewer">
+      <Position>5</Position>
+      <StateNumber>46408</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="300" parent="283" name="fk21q9d560wbyyl0j22l3km8kss">
+      <ColNames>reviewee</ColNames>
+      <ObjectId>16682</ObjectId>
+      <StateNumber>46414</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16669</RefTableId>
+    </foreign-key>
+    <foreign-key id="301" parent="283" name="fkgsuk8npq49gkmfmc47b9nnjec">
+      <ColNames>reviewer</ColNames>
+      <ObjectId>16687</ObjectId>
+      <StateNumber>46415</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16669</RefTableId>
+    </foreign-key>
+    <index id="302" parent="283" name="review_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16654</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>46408</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="303" parent="283" name="review_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16655</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>46408</StateNumber>
+      <UnderlyingIndexId>16654</UnderlyingIndexId>
+    </key>
+    <column id="304" parent="284" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>46409</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="305" parent="284" name="available_seats">
+      <Position>2</Position>
+      <StateNumber>46409</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="306" parent="284" name="departure_time">
+      <Position>3</Position>
+      <StateNumber>46409</StateNumber>
+      <StoredType>timestamp(6)|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="307" parent="284" name="destination">
+      <Position>4</Position>
+      <StateNumber>46409</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="308" parent="284" name="starting_point">
+      <Position>5</Position>
+      <StateNumber>46409</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="309" parent="284" name="driver_id">
+      <Position>6</Position>
+      <StateNumber>46409</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="310" parent="284" name="fkrm4qy9h6bw4vj5p41bpr0jf5m">
+      <ColNames>driver_id</ColNames>
+      <ObjectId>16692</ObjectId>
+      <StateNumber>46416</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16669</RefTableId>
+    </foreign-key>
+    <index id="311" parent="284" name="trip_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16662</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>46409</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="312" parent="284" name="trip_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16663</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>46409</StateNumber>
+      <UnderlyingIndexId>16662</UnderlyingIndexId>
+    </key>
+    <column id="313" parent="285" name="trip_id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>46410</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="314" parent="285" name="user_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>46410</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="315" parent="285" name="fk58mfrwv61kemq3vo640hpscj1">
+      <ColNames>trip_id</ColNames>
+      <ObjectId>16702</ObjectId>
+      <StateNumber>46418</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16656</RefTableId>
+    </foreign-key>
+    <foreign-key id="316" parent="285" name="fk7bry9qtii4f728fiwamgt6mkq">
+      <ColNames>user_id</ColNames>
+      <ObjectId>16697</ObjectId>
+      <StateNumber>46417</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16669</RefTableId>
+    </foreign-key>
+    <check id="317" parent="286" name="users_roles_check">
+      <ColNames>roles</ColNames>
+      <ObjectId>16672</ObjectId>
+      <Predicate>(roles)::text = ANY ((ARRAY[&apos;ADMIN&apos;::character varying, &apos;USER&apos;::character varying])::text[])</Predicate>
+      <StateNumber>46411</StateNumber>
+    </check>
+    <column id="318" parent="286" name="id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>46411</StateNumber>
+      <StoredType>bigint|0s</StoredType>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="319" parent="286" name="email">
+      <Position>2</Position>
+      <StateNumber>46411</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="320" parent="286" name="enabled">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>46411</StateNumber>
+      <StoredType>boolean|0s</StoredType>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="321" parent="286" name="last_name">
+      <Position>4</Position>
+      <StateNumber>46411</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="322" parent="286" name="name">
+      <Position>5</Position>
+      <StateNumber>46411</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="323" parent="286" name="password">
+      <Position>6</Position>
+      <StateNumber>46411</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="324" parent="286" name="roles">
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>46411</StateNumber>
+      <StoredType>varchar(20)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="325" parent="286" name="username">
+      <Position>8</Position>
+      <StateNumber>46411</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="326" parent="286" name="users_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16678</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>46411</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="327" parent="286" name="users_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16679</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>46411</StateNumber>
+      <UnderlyingIndexId>16678</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>

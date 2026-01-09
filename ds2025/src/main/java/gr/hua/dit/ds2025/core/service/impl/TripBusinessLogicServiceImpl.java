@@ -94,6 +94,7 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
 
             tripList = this.tripRepository.findAllByDriverId(currentUser.id());
             return tripList.stream()
+                    .filter(trip -> !trip.getDepartureTime().isAfter(LocalDateTime.now()))
                     .map(this.tripMapper::convertTripToTripView)
                     .toList();
         }
@@ -105,6 +106,7 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
 
             tripList = this.tripRepository.findAllByPassengersId(currentUser.id());
             return tripList.stream()
+                    .filter(trip -> !trip.getDepartureTime().isAfter(LocalDateTime.now()))
                     .map(this.tripMapper::convertTripToTripView)
                     .toList();
         }
@@ -214,6 +216,24 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
         public List<TripView> getAvailableTripsForHomepage(final LocalDateTime now) {
             if (now == null) throw new NullPointerException();
 
+
+
+
+
+            if (this.currentUserProvider.getCurrentUser().isPresent()){
+                final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
+                final Long currentUserId = currentUser.id();
+                return tripRepository.findAllByDepartureTimeAfterAndAvailableSeatsGreaterThan(now, 0).stream()
+                        .filter(trip -> !trip.getDriver().getId().equals(currentUserId))
+                        .filter(trip ->
+                                trip.getPassengers() == null ||
+                                        trip.getPassengers().stream()
+                                                .noneMatch(p -> p.getId().equals(currentUserId))
+                        )
+                        .map(tripMapper::convertTripToTripView)
+                        .sorted(Comparator.comparing(TripView::departureTime))
+                        .toList();
+            }
             return tripRepository.findAllByDepartureTimeAfterAndAvailableSeatsGreaterThan(now, 0).stream()
                     .map(tripMapper::convertTripToTripView)
                     .sorted(Comparator.comparing(TripView::departureTime))

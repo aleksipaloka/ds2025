@@ -28,14 +28,12 @@ public class ApplicationUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("Person with username" + username + " does not exist");
         }
-        if (!user.isEnabled()) {
-            throw new DisabledException("User account is deactivated");
-        }
         return new ApplicationUserDetails(
                 user.getId(),
                 user.getUsername(),
                 user.getPassword(),
-                user.getRole()
+                user.getRole(),
+                user.isEnabled()
         );
 
     }

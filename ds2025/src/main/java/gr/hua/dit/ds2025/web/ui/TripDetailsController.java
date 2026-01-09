@@ -21,12 +21,10 @@ public class TripDetailsController {
     private final CurrentUserProvider currentUserProvider;
     private final WeatherService weatherService;
 
-
     public TripDetailsController(
             final TripBusinessLogicService tripBusinessLogicService,
             final CurrentUserProvider currentUserProvider,
             final WeatherService weatherService
-
     ) {
         if (tripBusinessLogicService == null) throw new NullPointerException();
         if (currentUserProvider == null) throw new NullPointerException();
@@ -49,11 +47,6 @@ public class TripDetailsController {
         final String displayName = authentication != null ? authentication.getName() : "Guest";
         model.addAttribute("displayName", displayName);
 
-        String referer = request.getHeader("Referer");
-
-        model.addAttribute("backUrl",
-                referer != null ? referer : "/");
-
         Long currentUserId = null;
         if (loggedIn) {
             try {
@@ -66,13 +59,23 @@ public class TripDetailsController {
         model.addAttribute("currentUserId", currentUserId);
 
         final TripView trip = tripBusinessLogicService.getTrip(id).orElse(null);
-        if (trip == null) return "redirect:/profile";
-
+        if (trip == null) {
+            return "redirect:/profile";
+        }
         model.addAttribute("trip", trip);
+
+        final LocalDateTime now = LocalDateTime.now();
+
+        // Back URL rule:
+        // if trip.departureTime < now => /profile, else => /
+        final String backUrl =
+                (trip.departureTime() != null && trip.departureTime().isBefore(now))
+                        ? "/profile"
+                        : "/";
+        model.addAttribute("backUrl", backUrl);
 
         try {
             final String place = trip.startingPoint();
-
             if (place != null && !place.isBlank()) {
                 model.addAttribute("weather", weatherService.getCurrentWeatherByPlace(place));
             }
@@ -80,8 +83,8 @@ public class TripDetailsController {
             model.addAttribute("weatherError", "Could not load weather info.");
         }
 
-        final LocalDateTime now = LocalDateTime.now();
-        final boolean reviewEnabled = trip.departureTime() != null && now.isAfter(trip.departureTime());
+        final boolean reviewEnabled =
+                trip.departureTime() != null && now.isAfter(trip.departureTime());
         model.addAttribute("reviewEnabled", reviewEnabled);
 
         return "trip-details";

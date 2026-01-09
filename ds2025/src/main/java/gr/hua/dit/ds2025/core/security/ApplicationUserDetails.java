@@ -15,11 +15,13 @@ public class ApplicationUserDetails implements UserDetails {
     private final String username;
     private final String passwordHash;
     private final Role role;
+    private final boolean enabled;
 
     public ApplicationUserDetails(final long personId,
                                   final String username,
                                   final String passwordHash,
-                                  final Role role) {
+                                  final Role role,
+                                  boolean enabled) {
         if (personId <= 0) throw new IllegalArgumentException();
         if (username == null) throw new NullPointerException();
         if (username.isBlank()) throw new IllegalArgumentException();
@@ -31,6 +33,7 @@ public class ApplicationUserDetails implements UserDetails {
         this.username = username;
         this.passwordHash = passwordHash;
         this.role = role;
+        this.enabled = enabled;
     }
 
     public long personId() {
@@ -77,6 +80,6 @@ public class ApplicationUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 }
