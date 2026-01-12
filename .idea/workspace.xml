@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2a7817-0fa6-4a6e-805b-7ee2dfad6e52" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942/storage_v2/_src_/database/ds2025.EKIQsQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e32eba2d-8087-4736-9ccd-d7cfd593b942/storage_v2/_src_/database/ds2025.EKIQsQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ApplicationUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ApplicationUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ApplicationUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ApplicationUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripBusinessLogicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripBusinessLogicServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/TripDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/TripDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/HomepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/static/css/greenride.css" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/static/css/greenride.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/homepage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -125,6 +121,7 @@
       <workItem from="1767584372488" duration="19958000" />
       <workItem from="1767909525633" duration="1881000" />
       <workItem from="1767962014455" duration="7790000" />
+      <workItem from="1768215086262" duration="3463000" />
     </task>
     <servers />
   </component>

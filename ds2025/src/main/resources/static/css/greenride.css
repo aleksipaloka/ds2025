@@ -62,6 +62,19 @@ body{
 
 .top-icon iconify-icon{ color: inherit; }
 
+.user-info{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.username{
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
 .pill-btn{
     background:#fff;
     color: var(--green-dark);
@@ -88,6 +101,47 @@ body{
     font-size: 16px;
     font-weight: 800;
 }
+
+.cancel-wrapper{
+    position: relative;
+    display: inline-block;
+}
+
+.cancel-hint{
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* βελάκι */
+.cancel-hint::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #222 transparent transparent transparent;
+}
+
+/* δείξε το hint ΜΟΝΟ όταν είναι disabled και γίνεται hover */
+.cancel-wrapper.disabled:hover .cancel-hint{
+    opacity: 1;
+}
+
 
 .page{
     background: var(--bg);

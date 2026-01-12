@@ -33,7 +33,7 @@ public class RegistrationController {
             final Model model
     ) {
         if (AuthUtils.isAuthenticated(authentication)) {
-            return "redirect:/profile";
+            return "redirect:/";
         }
         // Initial data for the form.
         final CreateUserRequest createUserRequest = new CreateUserRequest( "", "", "", "", "");
@@ -49,7 +49,7 @@ public class RegistrationController {
             final Model model
     ) {
         if (AuthUtils.isAuthenticated(authentication)) {
-            return "redirect:/profile";
+            return "redirect:/";
         }
         if (bindingResult.hasErrors()) {
             return "register";

@@ -18,9 +18,15 @@
     <div class="top-actions">
         <a class="pill-btn" th:if="${loggedIn != true}" th:href="@{/login}">Login</a>
 
-        <a class="top-icon" th:if="${loggedIn == true}" th:href="@{/profile}">
-            <iconify-icon icon="iconamoon:profile-circle-fill" width="34" height="34"></iconify-icon>
-        </a>
+        <div class="user-info" th:if="${loggedIn == true}">
+            <span class="username" th:text="${displayName}">username</span>
+
+            <a class="top-icon" th:href="@{/profile}">
+                <iconify-icon icon="iconamoon:profile-circle-fill"
+                              width="34"
+                              height="34"></iconify-icon>
+            </a>
+        </div>
 
         <a class="pill-btn admin-btn" th:if="${isAdmin == true}" th:href="@{/admin/reviews}">
             Admin Reviews
@@ -63,7 +69,6 @@
                     </div>
 
                     <div class="trip-actions">
-                        <!-- Book ONLY for logged-in NON-admin -->
                         <form th:if="${loggedIn == true and isAdmin != true}"
                               th:action="@{/trips/{id}/book(id=${t.id()})}"
                               method="post">
@@ -88,7 +93,6 @@
 
         <div class="divider"></div>
 
-        <!-- RIGHT -->
         <section class="col">
             <h1 class="section-title">Upcoming Trips</h1>
 
@@ -120,11 +124,24 @@
                             Trip Details
                         </a>
 
-                        <form th:action="@{/trips/{id}/cancel(id=${t.id()})}"
-                              method="post">
-                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                            <button class="btn btn-danger" type="submit">Cancel Trip</button>
-                        </form>
+                        <div class="cancel-wrapper"
+                             th:classappend="${t.departureTime() != null and !t.departureTime().isAfter(nowPlus10)} ? ' disabled' : ''">
+
+                            <form th:action="@{/trips/{id}/cancel(id=${t.id()})}"
+                                  method="post">
+                                <input type="hidden"
+                                       th:name="${_csrf.parameterName}"
+                                       th:value="${_csrf.token}"/>
+
+                                <button class="btn btn-danger"
+                                        type="submit"
+                                        th:disabled="${t.departureTime() != null and !t.departureTime().isAfter(nowPlus10)}">
+                                    Cancel Trip
+                                </button>
+                            </form>
+
+                            <span class="cancel-hint"> Too late to cancel </span>
+                        </div>
                     </div>
 
                 </div>

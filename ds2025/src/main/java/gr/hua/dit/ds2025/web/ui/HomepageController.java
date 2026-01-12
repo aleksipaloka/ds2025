@@ -31,6 +31,11 @@ public class HomepageController {
 
         model.addAttribute("isAdmin", isAdmin);
 
+        model.addAttribute("displayName",
+                authentication != null ? authentication.getName() : "");
+
+        model.addAttribute("nowPlus10", LocalDateTime.now().plusMinutes(10));
+
         final LocalDateTime now = LocalDateTime.now();
 
         model.addAttribute("availableTrips", tripBusinessLogicService.getAvailableTripsForHomepage(now));

@@ -53,19 +53,17 @@ public class SecurityConfig {
     public SecurityFilterChain uiChain(final HttpSecurity http) throws Exception {
         http
                 .securityMatcher("/**")
-                // Το αφήνουμε ως σχόλιο προσωρινά... TODO configure.
-                // .csrf(csrf -> csrf.ignoringRequestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**"))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                         .requestMatchers("/", "/login", "/register").permitAll() // Public
-                        .requestMatchers("/profile", "/logout").authenticated()
+                        .requestMatchers("/", "/logout").authenticated()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
                         .loginPage("/login") // custom login page (see login.html)
                         .loginProcessingUrl("/login") // POST request target (handled by Spring Security)
-                        .defaultSuccessUrl("/profile", true)
+                        .defaultSuccessUrl("/", true)
                         .failureUrl("/login?error")
                         .permitAll()
                 )
