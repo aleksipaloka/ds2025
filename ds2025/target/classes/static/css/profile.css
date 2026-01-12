@@ -23,7 +23,6 @@
     font-weight: 900;
 }
 
-/* reuse divider class from greenride.css, but keep it consistent */
 .divider{
     background:#222;
     opacity: 0.5;
@@ -31,7 +30,6 @@
     min-height: 650px;
 }
 
-/* Past trips "Details" button */
 .btn-details{
     background: #f0ad4e;
     color: #fff;
@@ -41,7 +39,6 @@
     filter: brightness(0.97);
 }
 
-/* role pills */
 .role-pill.driver{
     color:#1f1f1f;
 }
@@ -50,7 +47,6 @@
     color:#1f1f1f;
 }
 
-/* Reviews */
 .review-filter{
     display:flex;
     align-items:center;
@@ -97,10 +93,4 @@
     margin: 6px 0;
     font-weight: 700;
     color:#222;
-}
-
-@media (max-width: 1000px){
-    .profile-columns{ grid-template-columns: 1fr; }
-    .divider{ display:none; }
-    .profile-title{ font-size: 36px; }
 }

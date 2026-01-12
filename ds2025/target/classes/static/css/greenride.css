@@ -125,7 +125,6 @@ body{
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* βελάκι */
 .cancel-hint::after{
     content: "";
     position: absolute;
@@ -137,11 +136,9 @@ body{
     border-color: #222 transparent transparent transparent;
 }
 
-/* δείξε το hint ΜΟΝΟ όταν είναι disabled και γίνεται hover */
 .cancel-wrapper.disabled:hover .cancel-hint{
     opacity: 1;
 }
-
 
 .page{
     background: var(--bg);
@@ -272,8 +269,3 @@ body{
 
 .new-trip-btn:hover{ background: var(--green-dark); }
 
-@media (max-width: 1000px){
-    .columns{ grid-template-columns: 1fr; }
-    .divider{ display:none; }
-    .section-title{ font-size: 36px; }
-}

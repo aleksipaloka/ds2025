@@ -26,8 +26,6 @@ import java.util.Optional;
 @Service
 public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ReviewBusinessLogicServiceImpl.class);
-
     private final ReviewMapper reviewMapper;
     private final ReviewRepository reviewRepository;
     private final UserRepository userRepository;
@@ -55,8 +53,6 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
 
         final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
 
-        // --------------------------------------------------
-
         final Review review;
         try {
             review = this.reviewRepository.getReferenceById(id);
@@ -68,21 +64,16 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
         reviewUserId = review.getReviewer().getId();
 
         if (currentUser.id() != reviewUserId) {
-            return Optional.empty(); // this Review does not exist for this user.
+            return Optional.empty();
         }
 
-        // --------------------------------------------------
-
         final ReviewView reviewView = this.reviewMapper.convertReviewToReviewView(review);
-
-        // --------------------------------------------------
 
         return Optional.of(reviewView);
     }
 
     @Override
     public List<ReviewView> getReviews() {
-        final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
         final List<Review> reviewList;
 
         reviewList = this.reviewRepository.findAll();
@@ -118,9 +109,6 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
     public ReviewView createReview(@Valid final CreateReviewRequest createReviewRequest, final boolean notify) {
         if (createReviewRequest == null) throw new NullPointerException();
 
-        // Unpack.
-        // --------------------------------------------------
-
         final long reviewerId = createReviewRequest.reviewerId();
         final long revieweeId = createReviewRequest.revieweeId();
         final int rating = createReviewRequest.rating();
@@ -135,25 +123,18 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
         final User reviewee = this.userRepository.findById(revieweeId)
                 .orElseThrow(() -> new IllegalArgumentException("reviewee not found"));
 
-        // Security
-        // --------------------------------------------------
 
         final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
         if (currentUser.id() != reviewerId) {
             throw new SecurityException("Authenticated reviewer does not match the review's reviewerId");
         }
 
-        // --------------------------------------------------
-
         Review review = new Review();
-        // review.setId(); // auto-generated
         review.setReviewer(reviewer);
         review.setReviewee(reviewee);
         review.setComments(comments);
         review.setRating(rating);
         review = this.reviewRepository.save(review);
-
-        // --------------------------------------------------
 
         return this.reviewMapper.convertReviewToReviewView(review);
     }

@@ -24,13 +24,4 @@ public class UserSummaryMapper {
         );
     }
 
-    public List<UserSummaryView> convertUserToUserSummaryView(final List<User> users) {
-        if (users == null) {
-            return Collections.emptyList();
-        }
-
-        return users.stream()
-                .map(this::convertUserToUserSummaryView)
-                .collect(Collectors.toList());
-    }
 }

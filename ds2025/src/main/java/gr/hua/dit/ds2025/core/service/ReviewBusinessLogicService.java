@@ -9,18 +9,12 @@ import java.util.Optional;
 
 public interface ReviewBusinessLogicService {
 
-    Optional<ReviewView> getReview(final Long id);
-
     List<ReviewView> getReviews();
 
     List<ReviewView> getReviewsToUser();
 
     List<ReviewView> getReviewsFromUser();
 
-
     ReviewView createReview(final CreateReviewRequest createReviewRequest, final boolean notify);
 
-    default ReviewView createReview(final CreateReviewRequest createReviewRequest) {
-        return this.createReview(createReviewRequest, true);
-    }
 }

@@ -20,10 +20,6 @@ public interface TripBusinessLogicService {
 
     TripView createTrip(final CreateTripRequest createTripRequest, final boolean notify);
 
-    default TripView createTrip(final CreateTripRequest createTripRequest) {
-        return this.createTrip(createTripRequest, true);
-    }
-
     void cancelTrip(final long tripId);
 
     void bookTrip(final long tripId);

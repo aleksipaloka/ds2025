@@ -142,7 +142,6 @@ public class WeatherServiceImpl implements WeatherService {
 
     private String cleanPlace(String place) {
         if (place == null) return "";
-        // keep first chunk before '-'
         String first = place.split("-")[0];
         return first.trim();
     }

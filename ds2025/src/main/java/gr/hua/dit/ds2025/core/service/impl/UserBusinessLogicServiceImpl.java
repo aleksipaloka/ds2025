@@ -23,9 +23,6 @@ import java.util.Set;
 @Service
 public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserBusinessLogicServiceImpl.class);
-
-
     private final Validator validator;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
@@ -65,7 +62,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
             return CreateUserResult.fail(sb.toString());
         }
 
-        final String username = createUserRequest.username().strip(); // remove whitespaces
+        final String username = createUserRequest.username().strip();
         final String name = createUserRequest.name().strip();
         final String lastName = createUserRequest.lastName().strip();
         final String email = createUserRequest.email().strip();
@@ -82,7 +79,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         final String Password = this.passwordEncoder.encode(password);
 
         User user = new User();
-        user.setId(null); // auto generated
+        user.setId(null);
         user.setUsername(username);
         user.setName(name);
         user.setLastName(lastName);
@@ -90,35 +87,14 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         user.setPassword(Password);
         user.setRole(Role.USER);
 
-        // --------------------------------------------------
-
         final Set<ConstraintViolation<User>> userViolations = this.validator.validate(user);
         if (!userViolations.isEmpty()) {
-            // Throw an exception instead of returning an instance, i.e. `CreateUserResult.fail`.
-            // At this point, errors/violations on the `User` instance
-            // indicate a programmer error, not a client error.
             throw new RuntimeException("invalid User instance");
         }
 
-        // Persist user (save/insert to database)
-        // --------------------------------------------------
-
         user = this.userRepository.save(user);
 
-        // --------------------------------------------------
-
-        if (notify) {
-            final String content = String.format(
-                    "You have successfully registered for the GreenRide application. " +
-                            "Use your username (%s) to log in.", username);
-        }
-
-        // Map `User` to `UserView`.
-        // --------------------------------------------------
-
         final UserView userView = this.userMapper.convertUserToUserView(user);
-
-        // --------------------------------------------------
 
         return CreateUserResult.success(userView);
     }
@@ -141,7 +117,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(rawPassword));
-        user.setRole(Role.ADMIN); // 🔥 ΜΟΝΟ ΕΔΩ ΜΠΑΙΝΕΙ ADMIN
+        user.setRole(Role.ADMIN);
 
         user = userRepository.save(user);
 

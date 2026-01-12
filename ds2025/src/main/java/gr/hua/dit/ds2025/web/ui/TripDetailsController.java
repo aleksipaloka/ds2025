@@ -38,7 +38,6 @@ public class TripDetailsController {
     public String tripDetails(
             @PathVariable("id") long id,
             Authentication authentication,
-            HttpServletRequest request,
             Model model
     ) {
         final boolean loggedIn = AuthUtils.isAuthenticated(authentication);
@@ -66,8 +65,6 @@ public class TripDetailsController {
 
         final LocalDateTime now = LocalDateTime.now();
 
-        // Back URL rule:
-        // if trip.departureTime < now => /profile, else => /
         final String backUrl =
                 (trip.departureTime() != null && trip.departureTime().isBefore(now))
                         ? "/profile"

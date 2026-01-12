@@ -38,7 +38,6 @@ public class AdminController {
         this.userRepository = userRepository;
     }
 
-    // ίδια λογική με ProfileController
     public record PastTripItem(TripView trip, String roleLabel) {}
 
     @GetMapping("/reviews")
@@ -52,10 +51,6 @@ public class AdminController {
         return "admin-reviews";
     }
 
-    /**
-     * ✅ Admin view ενός χρήστη με το ΙΔΙΟ profile.html
-     * URL: /admin/users/{id}
-     */
     @GetMapping("/users/{id}")
     public String viewUserProfileAsAdmin(
             @PathVariable("id") long id,
@@ -72,24 +67,19 @@ public class AdminController {
             return "redirect:/admin/reviews";
         }
 
-        // displayName στο profile
         final String displayName = (user.getName() != null ? user.getName() : "")
                 + " "
                 + (user.getLastName() != null ? user.getLastName() : "");
         model.addAttribute("displayName", displayName.isBlank() ? user.getUsername() : displayName.trim());
 
-        // Past trips: επειδή τα υπάρχοντα service methods είναι “current user only”,
-        // εδώ παίρνουμε όλα και φιλτράρουμε με βάση το id.
         final List<PastTripItem> pastTrips = new ArrayList<>();
 
-        // ως driver
         for (TripView t : tripBusinessLogicService.getTrips()) {
             if (t.driver() != null && t.driver().id() == id) {
                 pastTrips.add(new PastTripItem(t, "Driver"));
             }
         }
 
-        // ως passenger
         for (TripView t : tripBusinessLogicService.getTrips()) {
             if (t.passengers() != null && t.passengers().stream().anyMatch(p -> p.id() == id)) {
                 pastTrips.add(new PastTripItem(t, "Passenger"));
@@ -103,7 +93,6 @@ public class AdminController {
 
         model.addAttribute("pastTrips", pastTrips);
 
-        // Reviews (όλα) φιλτραρισμένα για τον user
         final List<ReviewView> reviewsToUser = reviewBusinessLogicService.getReviews().stream()
                 .filter(r -> r.reviewee() != null && r.reviewee().id() == id)
                 .toList();
@@ -112,16 +101,13 @@ public class AdminController {
                 .filter(r -> r.reviewer() != null && r.reviewer().id() == id)
                 .toList();
 
-        // Για το existing UI filter (to/from)
         model.addAttribute("reviewsToUser", reviewsToUser);
         model.addAttribute("reviewsFromUser", reviewsFromUser);
 
-        // ✅ Εδώ είναι η διόρθωση: διάλεξε based on reviewsFilter
         final boolean showTo = !"from".equalsIgnoreCase(reviewsFilter);
         model.addAttribute("reviews", showTo ? reviewsToUser : reviewsFromUser);
         model.addAttribute("reviewsFilter", showTo ? "to" : "from");
 
-        // Για να εμφανίζεις Admin badge/κουμπιά μέσα στο profile αν θες
         model.addAttribute("isAdmin", true);
         model.addAttribute("adminViewingUserId", id);
 

@@ -21,11 +21,6 @@ public class RestApiAccessDeniedHandler implements AccessDeniedHandler {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    /*public RestApiAccessDeniedHandler(final ObjectMapper objectMapper) {
-        if (objectMapper == null) throw new NullPointerException();
-        this.objectMapper = objectMapper;
-    }*/
-
     @Override
     public void handle(HttpServletRequest request,
                        HttpServletResponse response,

@@ -25,8 +25,6 @@ import java.util.*;
 @Service
 public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
 
-        private static final Logger LOGGER = LoggerFactory.getLogger(gr.hua.dit.ds2025.core.service.impl.TripBusinessLogicServiceImpl.class);
-
         private final TripMapper tripMapper;
         private final TripRepository tripRepository;
         private final UserRepository userRepository;
@@ -67,7 +65,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
 
         @Override
         public List<TripView> getTrips() {
-            final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
             final List<Trip> tripList;
 
             tripList = this.tripRepository.findAll();
@@ -75,17 +72,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
                     .map(this.tripMapper::convertTripToTripView)
                     .toList();
         }
-
-        public List<TripView> getPublicAvailableTrips() {
-
-            final List<Trip> tripList;
-
-            tripList = this.tripRepository.findAll();
-            return tripList.stream()
-                    .map(this.tripMapper::convertTripToTripView)
-                    .toList();
-        }
-
 
         @Override
         public List<TripView> getTripsAsDriver() {
@@ -177,7 +163,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
             tripRepository.save(trip);
         }
 
-
         @Transactional
         @Override
         public void cancelTrip(final long tripId) {
@@ -215,10 +200,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
         @Override
         public List<TripView> getAvailableTripsForHomepage(final LocalDateTime now) {
             if (now == null) throw new NullPointerException();
-
-
-
-
 
             if (this.currentUserProvider.getCurrentUser().isPresent()){
                 final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();

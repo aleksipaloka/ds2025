@@ -100,14 +100,12 @@
 
         <div class="divider"></div>
 
-        <!-- ================= RIGHT: REVIEWS ================= -->
         <section class="profile-col">
             <h2 class="profile-subtitle">Review Center</h2>
 
             <div class="review-filter">
                 <span class="filter-label">Filter By:</span>
 
-                <!-- ===== NORMAL USER MODE ===== -->
                 <a th:if="${adminViewingUserId == null}"
                    class="filter-pill"
                    th:classappend="${reviewsFilter == 'to'} ? ' active' : ''"
@@ -122,7 +120,6 @@
                     From Me
                 </a>
 
-                <!-- ===== ADMIN VIEW MODE ===== -->
                 <a th:if="${adminViewingUserId != null}"
                    class="filter-pill"
                    th:classappend="${reviewsFilter == 'to'} ? ' active' : ''"

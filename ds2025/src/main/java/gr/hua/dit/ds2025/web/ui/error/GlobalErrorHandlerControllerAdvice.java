@@ -19,7 +19,7 @@ public class GlobalErrorHandlerControllerAdvice {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalErrorHandlerControllerAdvice.class);
 
-    @ExceptionHandler(Exception.class) // all exceptions inherit Exception.class
+    @ExceptionHandler(Exception.class)
     public String handleAnyError(final Exception exception,
                                  final HttpServletRequest httpServletRequest,
                                  final HttpServletResponse httpServletResponse,

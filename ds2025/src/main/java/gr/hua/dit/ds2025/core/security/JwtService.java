@@ -21,7 +21,7 @@ public class JwtService {
     private final Key key;
     private final String issuer;
     private final String audience;
-    private final long ttlMinutes; // time-to-live.
+    private final long ttlMinutes;
 
     public JwtService(@Value("${app.jwt.secret}") final String secret,
                       @Value("${app.jwt.issuer}") final String issuer,

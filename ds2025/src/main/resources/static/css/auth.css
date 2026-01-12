@@ -160,9 +160,3 @@ input:focus, select:focus{
 .logout-helper{
     margin-top: 16px;
 }
-
-
-@media (max-width: 600px){
-    .auth-wrap{ margin-top: 0; }
-    .back-btn{ left: 16px; bottom: 16px; }
-}
