@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9e2a7817-0fa6-4a6e-805b-7ee2dfad6e52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/HomepageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/static/css/greenride.css" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/static/css/greenride.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/ReviewBusinessLogicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/ReviewBusinessLogicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

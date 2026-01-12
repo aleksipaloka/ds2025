@@ -42,7 +42,11 @@
     <div class="profile-columns">
 
         <section class="profile-col">
-            <h2 class="profile-subtitle">Past Trips</h2>
+            <h2 class="profile-subtitle"
+                th:text="${isAdmin == true ? 'Trips' : 'Past Trips'}">
+                Past Trips
+            </h2>
+
 
             <div class="trip-list">
 

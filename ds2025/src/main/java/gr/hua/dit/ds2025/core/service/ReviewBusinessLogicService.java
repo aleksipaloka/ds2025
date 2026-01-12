@@ -17,6 +17,7 @@ public interface ReviewBusinessLogicService {
 
     List<ReviewView> getReviewsFromUser();
 
+
     ReviewView createReview(final CreateReviewRequest createReviewRequest, final boolean notify);
 
     default ReviewView createReview(final CreateReviewRequest createReviewRequest) {

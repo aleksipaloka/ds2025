@@ -61,7 +61,8 @@ public class AdminController {
             @PathVariable("id") long id,
             Authentication authentication,
             Model model,
-            RedirectAttributes ra
+            RedirectAttributes ra,
+            @RequestParam(name = "reviews", defaultValue = "to") final String reviewsFilter
     ) {
         model.addAttribute("loggedIn", AuthUtils.isAuthenticated(authentication));
 
@@ -115,9 +116,10 @@ public class AdminController {
         model.addAttribute("reviewsToUser", reviewsToUser);
         model.addAttribute("reviewsFromUser", reviewsFromUser);
 
-        // Default: show "to"
-        model.addAttribute("reviews", reviewsToUser);
-        model.addAttribute("reviewsFilter", "to");
+        // ✅ Εδώ είναι η διόρθωση: διάλεξε based on reviewsFilter
+        final boolean showTo = !"from".equalsIgnoreCase(reviewsFilter);
+        model.addAttribute("reviews", showTo ? reviewsToUser : reviewsFromUser);
+        model.addAttribute("reviewsFilter", showTo ? "to" : "from");
 
         // Για να εμφανίζεις Admin badge/κουμπιά μέσα στο profile αν θες
         model.addAttribute("isAdmin", true);

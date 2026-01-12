@@ -19,5 +19,14 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="green_ride_db@dpg-d5ieci75r7bs73bvu8i0-a.virginia-postgres.render.com" uuid="6f9b9b33-71f3-4dd0-b22c-e9953d36e525">
+      <database-info product="PostgreSQL" version="18.1 (Debian 18.1-1.pgdg12+2)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="18.1" exact-driver-version="42.7">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>green_ride_db</user-name>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>
