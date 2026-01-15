@@ -67,6 +67,7 @@ public class AdminController {
             return "redirect:/admin/reviews";
         }
 
+        model.addAttribute("userEnabled", user.isEnabled());
         final String displayName = (user.getName() != null ? user.getName() : "")
                 + " "
                 + (user.getLastName() != null ? user.getLastName() : "");

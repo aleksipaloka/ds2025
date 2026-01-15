@@ -29,15 +29,28 @@
 <main class="profile-page">
     <h1 class="profile-title" th:text="${displayName}">Name Surname</h1>
 
-    <form th:if="${adminViewingUserId != null}"
-          th:action="@{/admin/users/{id}/delete(id=${adminViewingUserId})}"
-          method="post"
-          style="margin-bottom: 20px;">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-        <button class="btn btn-danger" type="submit">
-            Deactivate (Delete) User
-        </button>
-    </form>
+    <div class="deactivate-wrapper"
+         th:if="${adminViewingUserId != null}"
+         th:classappend="${userEnabled != true} ? ' disabled' : ''">
+
+        <form th:action="@{/admin/users/{id}/delete(id=${adminViewingUserId})}"
+              method="post">
+            <input type="hidden"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}"/>
+
+            <button class="btn btn-danger"
+                    type="submit"
+                    th:disabled="${userEnabled != true}">
+                Deactivate User
+            </button>
+        </form>
+
+        <span class="deactivate-hint">
+        User is deactivated
+    </span>
+    </div>
+
 
     <div class="profile-columns">
 

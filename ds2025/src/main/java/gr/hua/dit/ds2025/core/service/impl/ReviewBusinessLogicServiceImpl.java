@@ -47,32 +47,6 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
     }
 
     @Override
-    public Optional<ReviewView> getReview(final Long id) {
-        if (id == null) throw new NullPointerException();
-        if (id <= 0) throw new IllegalArgumentException();
-
-        final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
-
-        final Review review;
-        try {
-            review = this.reviewRepository.getReferenceById(id);
-        } catch (EntityNotFoundException ignored) {
-            return Optional.empty();
-        }
-
-        final long reviewUserId;
-        reviewUserId = review.getReviewer().getId();
-
-        if (currentUser.id() != reviewUserId) {
-            return Optional.empty();
-        }
-
-        final ReviewView reviewView = this.reviewMapper.convertReviewToReviewView(review);
-
-        return Optional.of(reviewView);
-    }
-
-    @Override
     public List<ReviewView> getReviews() {
         final List<Review> reviewList;
 
