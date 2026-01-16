@@ -5,9 +5,11 @@ import gr.hua.dit.ds2025.core.repositories.ReviewRepository;
 import gr.hua.dit.ds2025.core.service.ReviewDataService;
 import gr.hua.dit.ds2025.core.service.mapper.ReviewMapper;
 import gr.hua.dit.ds2025.core.service.model.ReviewView;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReviewDataServiceImpl implements ReviewDataService {
@@ -31,5 +33,13 @@ public class ReviewDataServiceImpl implements ReviewDataService {
                 .map(this.reviewMapper::convertReviewToReviewView)
                 .toList();
         return reviewViewList;
+    }
+
+    @Override
+    public ReviewView getReviewById(long reviewId) {
+        final Review review;
+        review = this.reviewRepository.getReferenceById(reviewId);
+
+        return this.reviewMapper.convertReviewToReviewView(review);
     }
 }
