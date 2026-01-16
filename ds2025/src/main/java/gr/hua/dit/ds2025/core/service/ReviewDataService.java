@@ -8,4 +8,6 @@ import java.util.List;
 public interface ReviewDataService {
 
     List<ReviewView> getAllReviews();
+
+    ReviewView getReviewById(long reviewId);
 }
