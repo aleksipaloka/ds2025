@@ -27,8 +27,7 @@ public class ReviewResource {
     @PreAuthorize("hasRole('INTEGRATION_READ')")
     @GetMapping("")
     public List<ReviewView> reviews() {
-        final List<ReviewView> reviewViewList = this.reviewDataService.getAllReviews();
-        return reviewViewList;
+        return this.reviewDataService.getAllReviews();
     }
 
     @PreAuthorize("hasRole('INTEGRATION_READ')")
@@ -37,4 +36,27 @@ public class ReviewResource {
         return reviewDataService.getReviewById(id);
     }
 
+    @PreAuthorize("hasRole('INTEGRATION_READ')")
+    @GetMapping("/user/{id}")
+    public List<ReviewView> byUserId(@PathVariable("id") long id) {
+        return reviewDataService.getAllReviewsFromToUser(id);
+    }
+
+    @PreAuthorize("hasRole('INTEGRATION_READ')")
+    @GetMapping("/user/from/{id}")
+    public List<ReviewView> fromUser(@PathVariable("id") long id) {
+        return reviewDataService.getAllReviewsFromUser(id);
+    }
+
+    @PreAuthorize("hasRole('INTEGRATION_READ')")
+    @GetMapping("/user/to/{id}")
+    public List<ReviewView> toUser(@PathVariable("id") long id) {
+        return reviewDataService.getAllReviewsToUser(id);
+    }
+
+    @PreAuthorize("hasAuthority('INTEGRATION_WRITE')")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ReviewView create(@RequestBody @Valid CreateReviewRequest req) {
+        return reviewDataService.createReview(req, false);
+    }
 }
