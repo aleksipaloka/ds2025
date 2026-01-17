@@ -1,87 +1,62 @@
 package gr.hua.dit.ds2025.web.rest;
 
-import gr.hua.dit.ds2025.core.repositories.ReviewRepository;
 import gr.hua.dit.ds2025.core.service.ReviewBusinessLogicService;
 import gr.hua.dit.ds2025.core.service.ReviewDataService;
-import gr.hua.dit.ds2025.core.service.mapper.ReviewMapper;
+import gr.hua.dit.ds2025.core.service.model.CreateReviewRequest;
 import gr.hua.dit.ds2025.core.service.model.ReviewView;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/v1/review", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ReviewResource {
 
     private final ReviewDataService reviewDataService;
-    private final ReviewRepository reviewRepository;
-    private final ReviewBusinessLogicService reviewBusinessLogicService;
-    private final ReviewMapper reviewMapper;
 
-    public ReviewResource(ReviewDataService reviewDataService, ReviewRepository reviewRepository, ReviewBusinessLogicService reviewBusinessLogicService, ReviewMapper reviewMapper) {
+    public ReviewResource(ReviewDataService reviewDataService) {
         this.reviewDataService = reviewDataService;
-        this.reviewRepository = reviewRepository;
-        this.reviewBusinessLogicService = reviewBusinessLogicService;
-        this.reviewMapper = reviewMapper;
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping
-    public List<ReviewView> viewAllReviews() {
-        return reviewDataService.getAllReviews();
     }
 
 
-    @GetMapping("/reviewsFromMe")
-    public ResponseEntity<?> viewReviewsFromMe(@AuthenticationPrincipal Authentication auth) {
-        try {
-            final List<ReviewView> reviewViewList = this.reviewDataService.getAllReviews();
-            if (reviewViewList.isEmpty()) {
-                return ResponseEntity.notFound().build();
-            }
-
-            final List<ReviewView> reviewsFromMe = reviewBusinessLogicService.getReviewsFromUser();
-
-            if (reviewsFromMe.isEmpty()) {
-                return ResponseEntity.notFound().build();
-            }
-            return ResponseEntity.ok(reviewsFromMe);
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(null);
-        }
+    @PreAuthorize("hasRole('INTEGRATION_READ')")
+    @GetMapping("")
+    public List<ReviewView> reviews() {
+        return this.reviewDataService.getAllReviews();
     }
 
-    @GetMapping("/reviewsToMe")
-    public ResponseEntity<?> viewReviewsToMe(@AuthenticationPrincipal Authentication auth) {
-        try {
-            final List<ReviewView> reviewViewList = this.reviewDataService.getAllReviews();
-            if (reviewViewList.isEmpty()) {
-                return ResponseEntity.notFound().build();
-            }
-
-            final List<ReviewView> reviewsToMe = reviewBusinessLogicService.getReviewsToUser();
-
-            if (reviewsToMe.isEmpty()) {
-                return ResponseEntity.notFound().build();
-            }
-            return ResponseEntity.ok(reviewsToMe);
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(null);
-        }
+    @PreAuthorize("hasRole('INTEGRATION_READ')")
+    @GetMapping("/{id}")
+    public ReviewView byId(@PathVariable("id") long id) {
+        return reviewDataService.getReviewById(id);
     }
 
+    @PreAuthorize("hasRole('INTEGRATION_READ')")
+    @GetMapping("/user/{id}")
+    public List<ReviewView> byUserId(@PathVariable("id") long id) {
+        return reviewDataService.getAllReviewsFromToUser(id);
+    }
 
+    @PreAuthorize("hasRole('INTEGRATION_READ')")
+    @GetMapping("/user/from/{id}")
+    public List<ReviewView> fromUser(@PathVariable("id") long id) {
+        return reviewDataService.getAllReviewsFromUser(id);
+    }
 
+    @PreAuthorize("hasRole('INTEGRATION_READ')")
+    @GetMapping("/user/to/{id}")
+    public List<ReviewView> toUser(@PathVariable("id") long id) {
+        return reviewDataService.getAllReviewsToUser(id);
+    }
+
+    @PreAuthorize("hasRole('INTEGRATION_WRITE')")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ReviewView create(@RequestBody @Valid CreateReviewRequest req) {
+        return reviewDataService.createReview(req, false);
+    }
 }

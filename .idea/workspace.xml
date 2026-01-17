@@ -5,16 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2a7817-0fa6-4a6e-805b-7ee2dfad6e52" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/config/JacksonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/email/EmailProviderClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/email/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/email/NotificationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/email/TripReminderResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/model/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/repositories/ClientRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ClientDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ClientDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/security/ClientDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/ClientAuthResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/NotificationResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/TripResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/model/ClientTokenRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/model/ClientTokenResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/model/TripReminderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/model/TripReminderResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/ReviewBusinessLogicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/ReviewBusinessLogicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/InitializationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/InitializationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/ReviewDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/ReviewDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/TripDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/TripDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/ReviewDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/ReviewDataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/impl/TripDataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/CreateTripRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/core/service/model/CreateTripRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/ReviewResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/ReviewResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/TripResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/ui/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/static/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/static/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/error/RestApiAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/java/gr/hua/dit/ds2025/web/rest/error/RestApiAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/InitializationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/InitializationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/ReviewDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/ReviewDataService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/TripDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/TripDataService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/impl/ReviewDataServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/impl/ReviewDataServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/impl/TripDataServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/service/impl/TripDataServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/web/rest/ReviewResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/web/rest/ReviewResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/web/rest/error/RestApiAuthenticationEntryPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/web/rest/error/RestApiAuthenticationEntryPoint.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +52,8 @@
         <option value="Enum" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Record" />
         <option value="Interface" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
