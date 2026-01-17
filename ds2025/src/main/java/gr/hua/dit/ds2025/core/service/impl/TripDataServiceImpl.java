@@ -95,13 +95,15 @@ public class TripDataServiceImpl implements TripDataService {
     @Override
     public TripView createTrip(CreateTripRequest req) {
         Trip trip = new Trip();
+        final int availableSeats = req.availableSeats();
 
         trip.setDriver(userRepository.findById(req.driverId())
                 .orElseThrow(() -> new IllegalArgumentException("reviewer not found")));
-        trip.setAvailableSeats(req.availableSeats());
+        trip.setAvailableSeats(availableSeats);
         trip.setDestination(req.destination());
         trip.setDepartureTime(req.departureTime());
         trip.setStartingPoint(req.startingPoint());
+        trip = this.tripRepository.save(trip);
 
         return this.tripMapper.convertTripToTripView(trip);
     }

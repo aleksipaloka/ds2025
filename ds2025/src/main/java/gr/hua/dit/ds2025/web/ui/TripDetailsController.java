@@ -39,7 +39,6 @@ public class TripDetailsController {
     public String tripDetails(
             @PathVariable("id") long id,
             Authentication authentication,
-            HttpServletRequest request,
             Model model
     ) {
         final boolean loggedIn = AuthUtils.isAuthenticated(authentication);

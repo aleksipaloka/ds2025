@@ -54,7 +54,7 @@ public class ReviewResource {
         return reviewDataService.getAllReviewsToUser(id);
     }
 
-    @PreAuthorize("hasAuthority('INTEGRATION_WRITE')")
+    @PreAuthorize("hasRole('INTEGRATION_WRITE')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ReviewView create(@RequestBody @Valid CreateReviewRequest req) {
         return reviewDataService.createReview(req, false);

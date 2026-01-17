@@ -60,7 +60,7 @@ public class TripResource {
         return this.tripDataService.getUpcomingTripsForUser(id);
     }
 
-    @PreAuthorize("hasAuthority('INTEGRATION_WRITE')")
+    @PreAuthorize("hasRole('INTEGRATION_WRITE')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public TripView create(@RequestBody @Valid CreateTripRequest req) {
         return tripDataService.createTrip(req);

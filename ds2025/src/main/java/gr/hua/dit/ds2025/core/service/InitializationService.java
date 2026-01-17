@@ -1,9 +1,7 @@
 package gr.hua.dit.ds2025.core.service;
 
 import gr.hua.dit.ds2025.core.model.Client;
-import gr.hua.dit.ds2025.core.model.Role;
 import gr.hua.dit.ds2025.core.repositories.ClientRepository;
-import gr.hua.dit.ds2025.core.service.model.CreateUserRequest;
 import jakarta.annotation.PostConstruct;
 
 import org.slf4j.Logger;
@@ -24,11 +22,9 @@ public class InitializationService {
     private final UserBusinessLogicService userBusinessLogicService;
     private final AtomicBoolean initialized;
 
-    public InitializationService(final ClientRepository clientRepository,
-                                 final UserBusinessLogicService personBusinessLogicService) {
-        if (clientRepository == null) throw new NullPointerException();
-        if (personBusinessLogicService == null) throw new NullPointerException();
+    public InitializationService(ClientRepository clientRepository, final UserBusinessLogicService personBusinessLogicService) {
         this.clientRepository = clientRepository;
+        if (personBusinessLogicService == null) throw new NullPointerException();
         this.userBusinessLogicService = personBusinessLogicService;
         this.initialized = new AtomicBoolean(false);
     }
@@ -41,7 +37,6 @@ public class InitializationService {
             return;
         }
         LOGGER.info("Starting database initialization with initial data...");
-
         userBusinessLogicService.createAdmin(
                 "Admin",
                 "Admin",

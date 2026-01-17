@@ -90,7 +90,7 @@ public class ReviewDataServiceImpl implements ReviewDataService {
                 .orElseThrow(() -> new IllegalArgumentException("reviewer not found")));
         review.setRating(createReviewRequest.rating());
         review.setComments(createReviewRequest.comments());
-
+        review = this.reviewRepository.save(review);
         return this.reviewMapper.convertReviewToReviewView(review);
     }
 

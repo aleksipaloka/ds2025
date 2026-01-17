@@ -23,9 +23,6 @@ import java.util.Set;
 @Service
 public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserBusinessLogicServiceImpl.class);
-
-
     private final Validator validator;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
@@ -65,7 +62,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
             return CreateUserResult.fail(sb.toString());
         }
 
-        final String username = createUserRequest.username().strip(); // remove whitespaces
+        final String username = createUserRequest.username().strip();
         final String name = createUserRequest.name().strip();
         final String lastName = createUserRequest.lastName().strip();
         final String email = createUserRequest.email().strip();
@@ -82,7 +79,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         final String Password = this.passwordEncoder.encode(password);
 
         User user = new User();
-        user.setId(null); // auto generated
+        user.setId(null);
         user.setUsername(username);
         user.setName(name);
         user.setLastName(lastName);
@@ -96,12 +93,6 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         }
 
         user = this.userRepository.save(user);
-
-        if (notify) {
-            final String content = String.format(
-                    "You have successfully registered for the GreenRide application. " +
-                            "Use your username (%s) to log in.", username);
-        }
 
         final UserView userView = this.userMapper.convertUserToUserView(user);
 
@@ -126,7 +117,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(rawPassword));
-        user.setRole(Role.ADMIN); // 🔥 ΜΟΝΟ ΕΔΩ ΜΠΑΙΝΕΙ ADMIN
+        user.setRole(Role.ADMIN);
 
         user = userRepository.save(user);
 

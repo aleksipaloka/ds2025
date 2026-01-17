@@ -12,13 +12,16 @@ import gr.hua.dit.ds2025.core.service.mapper.ReviewMapper;
 
 import gr.hua.dit.ds2025.core.service.model.CreateReviewRequest;
 import gr.hua.dit.ds2025.core.service.model.ReviewView;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicService {
@@ -45,7 +48,6 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
 
     @Override
     public List<ReviewView> getReviews() {
-        final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
         final List<Review> reviewList;
 
         reviewList = this.reviewRepository.findAll();
@@ -78,7 +80,7 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
 
     @Transactional
     @Override
-    public void createReview(@Valid final CreateReviewRequest createReviewRequest, final boolean notify) {
+    public ReviewView createReview(@Valid final CreateReviewRequest createReviewRequest, final boolean notify) {
         if (createReviewRequest == null) throw new NullPointerException();
 
         final long reviewerId = createReviewRequest.reviewerId();
@@ -95,6 +97,7 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
         final User reviewee = this.userRepository.findById(revieweeId)
                 .orElseThrow(() -> new IllegalArgumentException("reviewee not found"));
 
+
         final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
         if (currentUser.id() != reviewerId) {
             throw new SecurityException("Authenticated reviewer does not match the review's reviewerId");
@@ -107,6 +110,6 @@ public class ReviewBusinessLogicServiceImpl implements ReviewBusinessLogicServic
         review.setRating(rating);
         review = this.reviewRepository.save(review);
 
-        this.reviewMapper.convertReviewToReviewView(review);
+        return this.reviewMapper.convertReviewToReviewView(review);
     }
 }

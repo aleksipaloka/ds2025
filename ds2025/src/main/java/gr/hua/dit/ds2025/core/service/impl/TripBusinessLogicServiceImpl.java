@@ -1,5 +1,6 @@
 package gr.hua.dit.ds2025.core.service.impl;
 
+import gr.hua.dit.ds2025.core.model.Review;
 import gr.hua.dit.ds2025.core.model.Trip;
 import gr.hua.dit.ds2025.core.model.User;
 import gr.hua.dit.ds2025.core.repositories.TripRepository;
@@ -9,6 +10,7 @@ import gr.hua.dit.ds2025.core.security.CurrentUserProvider;
 import gr.hua.dit.ds2025.core.service.TripBusinessLogicService;
 import gr.hua.dit.ds2025.core.service.mapper.TripMapper;
 import gr.hua.dit.ds2025.core.service.model.CreateTripRequest;
+import gr.hua.dit.ds2025.core.service.model.ReviewView;
 import gr.hua.dit.ds2025.core.service.model.TripView;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -63,7 +65,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
 
         @Override
         public List<TripView> getTrips() {
-            final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();
             final List<Trip> tripList;
 
             tripList = this.tripRepository.findAll();
@@ -71,7 +72,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
                     .map(this.tripMapper::convertTripToTripView)
                     .toList();
         }
-
 
         @Override
         public List<TripView> getTripsAsDriver() {
@@ -99,7 +99,7 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
 
         @Transactional
         @Override
-        public void createTrip(@Valid final CreateTripRequest createTripRequest, final boolean notify) {
+        public TripView createTrip(@Valid final CreateTripRequest createTripRequest, final boolean notify) {
             if (createTripRequest == null) throw new NullPointerException();
 
             final long driverId = createTripRequest.driverId();
@@ -124,7 +124,7 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
             trip.setStartingPoint(startingPoint);
             trip = this.tripRepository.save(trip);
 
-            this.tripMapper.convertTripToTripView(trip);
+            return this.tripMapper.convertTripToTripView(trip);
         }
 
 
@@ -162,7 +162,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
 
             tripRepository.save(trip);
         }
-
 
         @Transactional
         @Override

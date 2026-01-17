@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 
 public record CreateTripRequest (
     @NotNull @Positive Long driverId,
-    @NotNull @NotBlank int availableSeats,
+    @NotNull @Positive int availableSeats,
     @NotNull @NotBlank @Size(max = 1000) String startingPoint,
     @NotNull @NotBlank @Size(max = 1000) String destination,
-    @NotNull @NotBlank LocalDateTime departureTime
+    @NotNull LocalDateTime departureTime
 ){}

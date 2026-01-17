@@ -52,7 +52,7 @@
     </div>
 
 
-        <div class="profile-columns">
+    <div class="profile-columns">
 
         <section class="profile-col">
             <h2 class="profile-subtitle"
@@ -85,6 +85,7 @@
                             Departure Time
                         </div>
 
+                        <!-- Passengers count -->
                         <div class="trip-line"
                              th:text="${'Passengers: ' + (pt.trip().passengers() != null ? pt.trip().passengers().size() : 0)}">
                             Passengers: 0
