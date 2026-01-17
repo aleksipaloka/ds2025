@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 
+//TODO MERGE TRIP CONTROLLER & TRIP-DETAILS CONTROLLER?
 @Controller
 public class TripController {
 

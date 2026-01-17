@@ -7,6 +7,8 @@ import java.util.List;
 @Table(name = "users")
 public class User {
 
+    //columns
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -46,6 +48,8 @@ public class User {
     @OneToMany(mappedBy = "reviewee", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Review> reviewsConcerning;
 
+    //constructors
+
     public User() {}
 
     public User(
@@ -75,6 +79,8 @@ public class User {
         this.reviewsWritten = reviewsWritten;
         this.reviewsConcerning = reviewsConcerning;
     }
+
+    //setters & getters
 
     public Long getId() {
         return id;

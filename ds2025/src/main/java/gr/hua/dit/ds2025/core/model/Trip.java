@@ -9,6 +9,7 @@ import java.util.List;
 public class Trip {
 
     //columns
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -39,6 +40,7 @@ public class Trip {
     private User driver;
 
     //constructors
+
     public Trip() {
 
     }
@@ -54,6 +56,7 @@ public class Trip {
     }
 
     //setters & getters
+
     public long getId() {
         return id;
     }

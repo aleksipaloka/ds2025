@@ -23,6 +23,8 @@ import java.util.Objects;
 )
 public class Client {
 
+    //columns
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -46,6 +48,8 @@ public class Client {
     @Column(name = "roles_csv", nullable = false, length = 255)
     private String rolesCsv;
 
+    //constructors
+
     public Client(Long id, String name, String secret, String rolesCsv) {
         this.id = id;
         this.name = name;
@@ -55,6 +59,8 @@ public class Client {
 
     public Client() {
     }
+
+    //setters & getters
 
     public Long getId() {
         return id;

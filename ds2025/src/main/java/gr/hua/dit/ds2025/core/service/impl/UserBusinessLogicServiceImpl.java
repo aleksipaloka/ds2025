@@ -90,22 +90,12 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
         user.setPassword(Password);
         user.setRole(Role.USER);
 
-        // --------------------------------------------------
-
         final Set<ConstraintViolation<User>> userViolations = this.validator.validate(user);
         if (!userViolations.isEmpty()) {
-            // Throw an exception instead of returning an instance, i.e. `CreateUserResult.fail`.
-            // At this point, errors/violations on the `User` instance
-            // indicate a programmer error, not a client error.
             throw new RuntimeException("invalid User instance");
         }
 
-        // Persist user (save/insert to database)
-        // --------------------------------------------------
-
         user = this.userRepository.save(user);
-
-        // --------------------------------------------------
 
         if (notify) {
             final String content = String.format(
@@ -113,12 +103,7 @@ public class UserBusinessLogicServiceImpl implements UserBusinessLogicService {
                             "Use your username (%s) to log in.", username);
         }
 
-        // Map `User` to `UserView`.
-        // --------------------------------------------------
-
         final UserView userView = this.userMapper.convertUserToUserView(user);
-
-        // --------------------------------------------------
 
         return CreateUserResult.success(userView);
     }

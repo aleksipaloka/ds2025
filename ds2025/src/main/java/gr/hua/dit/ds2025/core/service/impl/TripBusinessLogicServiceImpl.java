@@ -1,6 +1,5 @@
 package gr.hua.dit.ds2025.core.service.impl;
 
-import gr.hua.dit.ds2025.core.model.Review;
 import gr.hua.dit.ds2025.core.model.Trip;
 import gr.hua.dit.ds2025.core.model.User;
 import gr.hua.dit.ds2025.core.repositories.TripRepository;
@@ -10,7 +9,6 @@ import gr.hua.dit.ds2025.core.security.CurrentUserProvider;
 import gr.hua.dit.ds2025.core.service.TripBusinessLogicService;
 import gr.hua.dit.ds2025.core.service.mapper.TripMapper;
 import gr.hua.dit.ds2025.core.service.model.CreateTripRequest;
-import gr.hua.dit.ds2025.core.service.model.ReviewView;
 import gr.hua.dit.ds2025.core.service.model.TripView;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -24,8 +22,6 @@ import java.util.*;
 
 @Service
 public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
-
-        private static final Logger LOGGER = LoggerFactory.getLogger(gr.hua.dit.ds2025.core.service.impl.TripBusinessLogicServiceImpl.class);
 
         private final TripMapper tripMapper;
         private final TripRepository tripRepository;
@@ -76,16 +72,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
                     .toList();
         }
 
-        public List<TripView> getPublicAvailableTrips() {
-
-            final List<Trip> tripList;
-
-            tripList = this.tripRepository.findAll();
-            return tripList.stream()
-                    .map(this.tripMapper::convertTripToTripView)
-                    .toList();
-        }
-
 
         @Override
         public List<TripView> getTripsAsDriver() {
@@ -113,7 +99,7 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
 
         @Transactional
         @Override
-        public TripView createTrip(@Valid final CreateTripRequest createTripRequest, final boolean notify) {
+        public void createTrip(@Valid final CreateTripRequest createTripRequest, final boolean notify) {
             if (createTripRequest == null) throw new NullPointerException();
 
             final long driverId = createTripRequest.driverId();
@@ -138,7 +124,7 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
             trip.setStartingPoint(startingPoint);
             trip = this.tripRepository.save(trip);
 
-            return this.tripMapper.convertTripToTripView(trip);
+            this.tripMapper.convertTripToTripView(trip);
         }
 
 
@@ -215,10 +201,6 @@ public class TripBusinessLogicServiceImpl implements TripBusinessLogicService {
         @Override
         public List<TripView> getAvailableTripsForHomepage(final LocalDateTime now) {
             if (now == null) throw new NullPointerException();
-
-
-
-
 
             if (this.currentUserProvider.getCurrentUser().isPresent()){
                 final CurrentUser currentUser = this.currentUserProvider.requireCurrentUser();

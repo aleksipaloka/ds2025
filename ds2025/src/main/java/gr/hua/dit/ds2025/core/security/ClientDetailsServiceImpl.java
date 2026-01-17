@@ -28,14 +28,11 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
 
         final Client client = this.clientRepository.findByName(id).orElse(null);
         if (client == null) {
-            return Optional.empty(); // client does not exist.
+            return Optional.empty();
         }
 
         if (Objects.equals(client.getSecret(), secret)) {
-            // TODO better and more secure implementation. For now, it's just fine!
-            // ClientDetails.id     - map - Client.name
-            // ClientDetails.secret - map - Client.secret
-            // ClientDetails.roles  - map - Client.permissionsCsv (comma separated values)
+
             final ClientDetails clientDetails = new ClientDetails(
                     client.getName(),
                     client.getSecret(),

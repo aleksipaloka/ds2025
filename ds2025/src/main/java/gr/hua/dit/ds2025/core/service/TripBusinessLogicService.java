@@ -2,7 +2,6 @@ package gr.hua.dit.ds2025.core.service;
 
 import gr.hua.dit.ds2025.core.service.model.CreateTripRequest;
 import gr.hua.dit.ds2025.core.service.model.TripView;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,11 +17,7 @@ public interface TripBusinessLogicService {
 
     List<TripView> getTripsAsPassenger();
 
-    TripView createTrip(final CreateTripRequest createTripRequest, final boolean notify);
-
-    default TripView createTrip(final CreateTripRequest createTripRequest) {
-        return this.createTrip(createTripRequest, true);
-    }
+    void createTrip(final CreateTripRequest createTripRequest, final boolean notify);
 
     void cancelTrip(final long tripId);
 

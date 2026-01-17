@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDateTime;
 
+//TODO MERGE TRIP CONTROLLER & TRIP-DETAILS CONTROLLER?
 @Controller
 public class TripDetailsController {
 
@@ -66,8 +67,6 @@ public class TripDetailsController {
 
         final LocalDateTime now = LocalDateTime.now();
 
-        // Back URL rule:
-        // if trip.departureTime < now => /profile, else => /
         final String backUrl =
                 (trip.departureTime() != null && trip.departureTime().isBefore(now))
                         ? "/profile"

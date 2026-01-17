@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 public class Review {
 
     //columns
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -26,6 +27,7 @@ public class Review {
     private String comments;
 
     //constructors
+
     public Review(){}
 
     public Review(long id, User reviewer, User reviewee, int rating, String comments) {

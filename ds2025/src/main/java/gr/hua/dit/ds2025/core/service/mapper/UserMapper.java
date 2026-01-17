@@ -45,14 +45,4 @@ public class UserMapper {
         return userView;
 
     }
-
-    public List<UserView> convertUserToUserView(final List<User> users) {
-        if (users == null) {
-            return Collections.emptyList();
-        }
-
-        return users.stream()
-                .map(this::convertUserToUserView)   // καλεί την 1-1 μέθοδο
-                .collect(Collectors.toList());
-    }
 }

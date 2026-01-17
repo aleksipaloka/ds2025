@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-/**
- * UI controller for managing teacher/student registration.
- */
+
 @Controller
 public class RegistrationController {
 
@@ -35,7 +33,6 @@ public class RegistrationController {
         if (AuthUtils.isAuthenticated(authentication)) {
             return "redirect:/";
         }
-        // Initial data for the form.
         final CreateUserRequest createUserRequest = new CreateUserRequest( "", "", "", "", "");
         model.addAttribute("createUserRequest", createUserRequest);
         return "register";
@@ -58,8 +55,8 @@ public class RegistrationController {
         if (createUserResult.created()) {
             return "redirect:/login";
         }
-        model.addAttribute("createUserRequest", createUserRequest); // Pass the same form data.
-        model.addAttribute("errormessage", createUserResult.reason()); // Show an error message!
+        model.addAttribute("createUserRequest", createUserRequest);
+        model.addAttribute("errormessage", createUserResult.reason());
         return "register";
     }
 }
