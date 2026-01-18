@@ -59,6 +59,8 @@ public class EmailProviderClient {
             }
 
         } catch (Exception e) {
+            System.err.println("[EMAIL][ERROR] " + e.getClass().getName() + ": " + e.getMessage());
+            e.printStackTrace();
             throw new RuntimeException("Failed to send email", e);
         }
     }
