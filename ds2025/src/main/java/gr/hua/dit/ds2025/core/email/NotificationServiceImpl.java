@@ -7,6 +7,7 @@ import gr.hua.dit.ds2025.core.service.model.TripView;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,7 +54,6 @@ public class NotificationServiceImpl implements NotificationService{
             return new TripReminderResult(false, "Trip already started/past", List.of());
         }
 
-        // Collect user IDs (driver + passengers)
         final Set<Long> userIds = new LinkedHashSet<>();
         if (trip.driver() != null && trip.driver().id() != null) userIds.add(trip.driver().id());
         if (trip.passengers() != null) {
@@ -62,7 +62,6 @@ public class NotificationServiceImpl implements NotificationService{
             }
         }
 
-        // Convert IDs -> emails via UserBusinessLogicService (service only)
         final Set<String> emails = new LinkedHashSet<>();
         for (Long uid : userIds) {
             userRepository.findById(uid).ifPresent(u -> {
@@ -79,12 +78,35 @@ public class NotificationServiceImpl implements NotificationService{
         final String subject = "GreenRide: Trip starts in 10 minutes";
         final String html = buildHtml(trip, customMessage);
 
+        final List<String> sent = new ArrayList<>();
+        final List<String> failed = new ArrayList<>();
+
         for (String email : emails) {
-            emailClient.sendEmail(email, subject, html);
+            try {
+                emailClient.sendEmail(email, subject, html);
+                sent.add(email);
+            } catch (Exception e) {
+                failed.add(email);
+                System.err.println("[EMAIL][FAILED] to=" + email + " reason=" + e.getMessage());
+            }
         }
 
-        return new TripReminderResult(true, "Sent", emails.stream().toList());
+        if (sent.isEmpty()) {
+            return new TripReminderResult(
+                    false,
+                    "Failed to send to all recipients",
+                    List.of()
+            );
+        }
+
+        String reason = failed.isEmpty()
+                ? "Sent to all recipients"
+                : "Partially sent (" + sent.size() + "/" + (sent.size() + failed.size()) + ")";
+
+        return new TripReminderResult(true, reason, sent);
+
     }
+
     private String buildHtml(final TripView trip, final String customMessage) {
         String msg = (customMessage == null || customMessage.isBlank())
                 ? "Reminder: Your trip starts in ~10 minutes."
@@ -109,7 +131,6 @@ public class NotificationServiceImpl implements NotificationService{
         return (s == null || s.isBlank()) ? "-" : s;
     }
 
-    // very small HTML escape for demo
     private static String escape(String s) {
         return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
     }

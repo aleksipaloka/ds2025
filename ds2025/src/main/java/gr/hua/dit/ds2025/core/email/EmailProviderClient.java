@@ -29,9 +29,6 @@ public class EmailProviderClient {
     @Value("${email.provider.enabled:false}")
     private boolean enabled;
 
-    /**
-     * External secured POST call (Authorization: Bearer <apiKey>)
-     */
     public void sendEmail(final String to, final String subject, final String html) {
         try {
             if (!enabled) {
@@ -39,7 +36,6 @@ public class EmailProviderClient {
                 return;
             }
 
-            // SendGrid-like JSON
             Map<String, Object> body = Map.of(
                     "personalizations", List.of(Map.of("to", List.of(Map.of("email", to)))),
                     "from", Map.of("email", fromEmail),
@@ -52,7 +48,6 @@ public class EmailProviderClient {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(baseUrl + "/v3/mail/send"))
                     .header("Content-Type", "application/json")
-                    // ✅ Secured external API call with token:
                     .header("Authorization", "Bearer " + apiKey)
                     .POST(HttpRequest.BodyPublishers.ofString(json))
                     .build();

@@ -95,7 +95,7 @@ input:focus{
     background: transparent;
     color: var(--green-dark);
     padding: 8px 12px;
-    border: 2px solid var(--green-dark); /* 👈 ΕΔΩ */
+    border: 2px solid var(--green-dark);
 
     border-radius: 8px;
     font-weight: 800;
