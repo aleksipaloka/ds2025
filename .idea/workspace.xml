@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2a7817-0fa6-4a6e-805b-7ee2dfad6e52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ds2025/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f9b9b33-71f3-4dd0-b22c-e9953d36e525.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6f9b9b33-71f3-4dd0-b22c-e9953d36e525.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/email/EmailProviderClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/ds2025/target/classes/gr/hua/dit/ds2025/core/email/EmailProviderClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ds2025/.env.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +126,7 @@
       <workItem from="1768322101262" duration="724000" />
       <workItem from="1768501694511" duration="5405000" />
       <workItem from="1768774799342" duration="1088000" />
-      <workItem from="1768827578708" duration="4194000" />
+      <workItem from="1768827578708" duration="7140000" />
     </task>
     <servers />
   </component>
