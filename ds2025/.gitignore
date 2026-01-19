@@ -1,0 +1,13 @@
+# Environment variables
+.env.properties
+
+# Maven
+target/
+
+# Logs
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
