@@ -1410,69 +1410,74 @@ false posixrules
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
-    <role id="4" parent="1" name="datadog">
-      <CanLogin>1</CanLogin>
-      <ObjectId>16394</ObjectId>
-      <RoleGrants>3373</RoleGrants>
-    </role>
-    <role id="5" parent="1" name="green_ride_db">
-      <CanLogin>1</CanLogin>
-      <CreateDb>1</CreateDb>
-      <CreateRole>1</CreateRole>
-      <ObjectId>16385</ObjectId>
-    </role>
-    <role id="6" parent="1" name="pg_checkpoint">
-      <ObjectId>4544</ObjectId>
-    </role>
-    <role id="7" parent="1" name="pg_create_subscription">
-      <ObjectId>6304</ObjectId>
-    </role>
-    <role id="8" parent="1" name="pg_database_owner">
+    <role id="4" parent="1" name="pg_database_owner">
       <ObjectId>6171</ObjectId>
     </role>
-    <role id="9" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
+    <role id="5" parent="1" name="pg_read_all_data">
+      <ObjectId>6181</ObjectId>
     </role>
-    <role id="10" parent="1" name="pg_maintain">
-      <ObjectId>6337</ObjectId>
+    <role id="6" parent="1" name="pg_write_all_data">
+      <ObjectId>6182</ObjectId>
     </role>
-    <role id="11" parent="1" name="pg_monitor">
+    <role id="7" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
       <RoleGrants>3374
 3375
 3377</RoleGrants>
     </role>
-    <role id="12" parent="1" name="pg_read_all_data">
-      <ObjectId>6181</ObjectId>
-    </role>
-    <role id="13" parent="1" name="pg_read_all_settings">
+    <role id="8" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
     </role>
-    <role id="14" parent="1" name="pg_read_all_stats">
+    <role id="9" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
     </role>
-    <role id="15" parent="1" name="pg_read_server_files">
-      <ObjectId>4569</ObjectId>
-    </role>
-    <role id="16" parent="1" name="pg_signal_autovacuum_worker">
-      <ObjectId>6392</ObjectId>
-    </role>
-    <role id="17" parent="1" name="pg_signal_backend">
-      <ObjectId>4200</ObjectId>
-    </role>
-    <role id="18" parent="1" name="pg_stat_scan_tables">
+    <role id="10" parent="1" name="pg_stat_scan_tables">
       <ObjectId>3377</ObjectId>
     </role>
-    <role id="19" parent="1" name="pg_use_reserved_connections">
-      <ObjectId>4550</ObjectId>
+    <role id="11" parent="1" name="pg_read_server_files">
+      <ObjectId>4569</ObjectId>
     </role>
-    <role id="20" parent="1" name="pg_write_all_data">
-      <ObjectId>6182</ObjectId>
-    </role>
-    <role id="21" parent="1" name="pg_write_server_files">
+    <role id="12" parent="1" name="pg_write_server_files">
       <ObjectId>4570</ObjectId>
     </role>
-    <role id="22" parent="1" name="postgres">
+    <role id="13" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
+    </role>
+    <role id="14" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+    </role>
+    <role id="15" parent="1" name="pg_checkpoint">
+      <ObjectId>4544</ObjectId>
+    </role>
+    <role id="16" parent="1" name="pg_maintain">
+      <ObjectId>6337</ObjectId>
+    </role>
+    <role id="17" parent="1" name="pg_use_reserved_connections">
+      <ObjectId>4550</ObjectId>
+    </role>
+    <role id="18" parent="1" name="pg_create_subscription">
+      <ObjectId>6304</ObjectId>
+    </role>
+    <role id="19" parent="1" name="pg_signal_autovacuum_worker">
+      <ObjectId>6392</ObjectId>
+    </role>
+    <role id="20" parent="1" name="primaryuser">
+      <CanLogin>1</CanLogin>
+      <ObjectId>16384</ObjectId>
+      <Replication>1</Replication>
+    </role>
+    <role id="21" parent="1" name="green_ride_db">
+      <CanLogin>1</CanLogin>
+      <CreateDb>1</CreateDb>
+      <CreateRole>1</CreateRole>
+      <ObjectId>16385</ObjectId>
+    </role>
+    <role id="22" parent="1" name="datadog">
+      <CanLogin>1</CanLogin>
+      <ObjectId>16394</ObjectId>
+      <RoleGrants>3373</RoleGrants>
+    </role>
+    <role id="23" parent="1" name="postgres">
       <BypassRls>1</BypassRls>
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
@@ -1480,11 +1485,6 @@ false posixrules
       <ObjectId>10</ObjectId>
       <Replication>1</Replication>
       <SuperRole>1</SuperRole>
-    </role>
-    <role id="23" parent="1" name="primaryuser">
-      <CanLogin>1</CanLogin>
-      <ObjectId>16384</ObjectId>
-      <Replication>1</Replication>
     </role>
     <tablespace id="24" parent="1" name="pg_default">
       <ObjectId>1663</ObjectId>
@@ -4983,255 +4983,5 @@ false posixrules
       <StoredType>bigint|0s</StoredType>
       <OwnerName>green_ride_db</OwnerName>
     </sequence>
-    <table id="280" parent="275" name="review">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16470</ObjectId>
-      <StateNumber>1350</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>green_ride_db</OwnerName>
-    </table>
-    <table id="281" parent="275" name="trip">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16476</ObjectId>
-      <StateNumber>1352</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>green_ride_db</OwnerName>
-    </table>
-    <table id="282" parent="275" name="trip_passengers">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16484</ObjectId>
-      <StateNumber>1353</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>green_ride_db</OwnerName>
-    </table>
-    <table id="283" parent="275" name="users">
-      <DetailsLevel>2</DetailsLevel>
-      <ObjectId>16489</ObjectId>
-      <StateNumber>1350</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>green_ride_db</OwnerName>
-    </table>
-    <column id="284" parent="280" name="id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>1346</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="285" parent="280" name="comments">
-      <Position>2</Position>
-      <StateNumber>1346</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="286" parent="280" name="rating">
-      <Position>3</Position>
-      <StateNumber>1346</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="287" parent="280" name="reviewee">
-      <Position>4</Position>
-      <StateNumber>1346</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="288" parent="280" name="reviewer">
-      <Position>5</Position>
-      <StateNumber>1346</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <foreign-key id="289" parent="280" name="fk21q9d560wbyyl0j22l3km8kss">
-      <ColNames>reviewee</ColNames>
-      <ObjectId>16500</ObjectId>
-      <StateNumber>1350</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16489</RefTableId>
-    </foreign-key>
-    <foreign-key id="290" parent="280" name="fkgsuk8npq49gkmfmc47b9nnjec">
-      <ColNames>reviewer</ColNames>
-      <ObjectId>16505</ObjectId>
-      <StateNumber>1351</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16489</RefTableId>
-    </foreign-key>
-    <index id="291" parent="280" name="review_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16474</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>1346</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="292" parent="280" name="review_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16475</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>1346</StateNumber>
-      <UnderlyingIndexId>16474</UnderlyingIndexId>
-    </key>
-    <column id="293" parent="281" name="id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>1347</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="294" parent="281" name="available_seats">
-      <Position>2</Position>
-      <StateNumber>1347</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="295" parent="281" name="departure_time">
-      <Position>3</Position>
-      <StateNumber>1347</StateNumber>
-      <StoredType>timestamp(6)|0s</StoredType>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="296" parent="281" name="destination">
-      <Position>4</Position>
-      <StateNumber>1347</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="297" parent="281" name="starting_point">
-      <Position>5</Position>
-      <StateNumber>1347</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="298" parent="281" name="driver_id">
-      <Position>6</Position>
-      <StateNumber>1347</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <foreign-key id="299" parent="281" name="fkrm4qy9h6bw4vj5p41bpr0jf5m">
-      <ColNames>driver_id</ColNames>
-      <ObjectId>16510</ObjectId>
-      <StateNumber>1352</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16489</RefTableId>
-    </foreign-key>
-    <index id="300" parent="281" name="trip_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16482</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>1347</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="301" parent="281" name="trip_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16483</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>1347</StateNumber>
-      <UnderlyingIndexId>16482</UnderlyingIndexId>
-    </key>
-    <column id="302" parent="282" name="trip_id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>1348</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="303" parent="282" name="user_id">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>1348</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <foreign-key id="304" parent="282" name="fk58mfrwv61kemq3vo640hpscj1">
-      <ColNames>trip_id</ColNames>
-      <ObjectId>16520</ObjectId>
-      <StateNumber>1354</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16476</RefTableId>
-    </foreign-key>
-    <foreign-key id="305" parent="282" name="fk7bry9qtii4f728fiwamgt6mkq">
-      <ColNames>user_id</ColNames>
-      <ObjectId>16515</ObjectId>
-      <StateNumber>1353</StateNumber>
-      <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16489</RefTableId>
-    </foreign-key>
-    <check id="306" parent="283" name="users_roles_check">
-      <ColNames>roles</ColNames>
-      <ObjectId>16492</ObjectId>
-      <Predicate>(roles)::text = ANY ((ARRAY[&apos;ADMIN&apos;::character varying, &apos;USER&apos;::character varying])::text[])</Predicate>
-      <StateNumber>1349</StateNumber>
-    </check>
-    <column id="307" parent="283" name="id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>1349</StateNumber>
-      <StoredType>bigint|0s</StoredType>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="308" parent="283" name="email">
-      <Position>2</Position>
-      <StateNumber>1349</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="309" parent="283" name="enabled">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>1349</StateNumber>
-      <StoredType>boolean|0s</StoredType>
-      <TypeId>16</TypeId>
-    </column>
-    <column id="310" parent="283" name="last_name">
-      <Position>4</Position>
-      <StateNumber>1349</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="311" parent="283" name="name">
-      <Position>5</Position>
-      <StateNumber>1349</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="312" parent="283" name="password">
-      <Position>6</Position>
-      <StateNumber>1349</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="313" parent="283" name="roles">
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-      <StateNumber>1349</StateNumber>
-      <StoredType>varchar(20)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="314" parent="283" name="username">
-      <Position>8</Position>
-      <StateNumber>1349</StateNumber>
-      <StoredType>varchar(255)|0s</StoredType>
-      <TypeId>1043</TypeId>
-    </column>
-    <index id="315" parent="283" name="users_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16498</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>1349</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="316" parent="283" name="users_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16499</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>1349</StateNumber>
-      <UnderlyingIndexId>16498</UnderlyingIndexId>
-    </key>
   </database-model>
 </dataSource>
